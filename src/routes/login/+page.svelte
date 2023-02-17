@@ -7,26 +7,26 @@
         <!-- login form wrapper -->
         <div class="flex justify-center items-center h-full w-1/2 ">
             <!-- login form -->
-            <form class="flex flex-col justify-center gap-6 w-3/5">
+            <form action="?/login" method="POST" class="flex flex-col justify-center gap-6 w-3/5">
                 <h1 class="text-4xl font-semibold">Login</h1>
-                <input type="text" placeholder="Email" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] " >
-                <input type="password" placeholder="Password" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] " >
-                <p class="text-right">Forgot password?</p>
-                <button class='bg-white/[.15] rounded-lg h-14 p-4 text-lg'>Login</button>
+                <input type="text" name="email" placeholder="Email" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] " >
+                <input type="password" name="password" placeholder="Password" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] " >
+                <a href="/" class="text-right">Forgot password?</a>
+                <button type="submit" class='bg-neutral/[.15] hover:bg-neutral/[.2]  rounded-lg h-14 p-4 text-lg'>Login</button>
                 <div class="flex justify-evenly items-center gap-4 px-2">
-                    <span class="h-0.5 bg-white/[.15] flex-1"/>
+                    <span class="h-0.5 bg-neutral/[.15] flex-1"/>
                     <p>Or</p>
-                    <span class="h-0.5 bg-white/[.15] flex-1" />
+                    <span class="h-0.5 bg-neutral/[.15] flex-1" />
                 </div>
-                <a class="bg-white/[.15] rounded-full h-14 p-4 flex justify-center items-center text-lg gap-8" href='/'>
+                <a href='/' class="bg-neutral/[.15] hover:bg-neutral/[.2] rounded-full h-14 p-4 flex justify-center items-center text-lg gap-8">
                     <Icon icon="logos:spotify-icon" width=28/>
                     <p>Login w/ Spotify</p>
                 </a>
-                <a class="bg-white/[.15] rounded-full h-14 p-4 flex justify-center items-center text-lg gap-8" href='/'>
+                <a href='/' class="bg-neutral/[.15] hover:bg-neutral/[.2] rounded-full h-14 p-4 flex justify-center items-center text-lg gap-8">
                     <Icon icon="logos:google-icon" width=28/>
                     <p>Login w/ Google</p>
                 </a>
-                <p>Don't have an account? <a class="text-primary" href="/">Sign Up</a></p>
+                <p class="text-center">Don't have an account? <a class="text-primary" href="/register">Sign Up</a></p>
             </form>
         </div>
         <!-- some sort of advertising / marketing design -->
