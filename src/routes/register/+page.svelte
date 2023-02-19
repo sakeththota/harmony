@@ -6,7 +6,7 @@
     const validatePassword: SubmitFunction = async ({ data, cancel }) => {
         if (data.get('password') !== data.get('confirm_password')) {
             console.log('passwords dont match')
-            toast({type: "error", message: "passwords don't match!"});
+            toast({type: "error", message: "passwords don't match!" });
             cancel();
         }
     }
