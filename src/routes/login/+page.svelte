@@ -9,8 +9,8 @@
             <!-- login form -->
             <form action="?/login" method="POST" class="flex flex-col justify-center gap-4 w-3/5">
                 <h1 class="text-3xl font-semibold">Login</h1>
-                <input type="text" name="email" placeholder="Email" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
-                <input type="password" name="password" placeholder="Password" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
+                <input type="text" name="email" placeholder="Email" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-md placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
+                <input type="password" name="password" placeholder="Password" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-md placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
                 <a href="/" class="text-right text-sm">Forgot password?</a>
                 <button type="submit" class='bg-neutral/[.15] hover:bg-neutral/[.2]  rounded-lg h-14 p-4 text-lg'>Login</button>
                 <p class="text-center text-sm">Don't have an account? <a class="text-primary" href="/register">Sign Up</a></p>

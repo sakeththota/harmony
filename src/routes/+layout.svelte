@@ -8,7 +8,7 @@
       import PlaylistLink  from '$lib/components/PlaylistLink.svelte'
       import logo from '$lib/assets/harmony-logo.png';
       import type { PageData } from './$types';
-	import Notifications from "$lib/components/Notifications.svelte";
+      import Notifications from "$lib/components/Notifications.svelte";
 
       onMount(() => {
             const { data: {subscription}} = supabase.auth.onAuthStateChange(()=>{
@@ -54,7 +54,7 @@
                     </div>
                 </div>
             </div>
-            <span class="h-full w-[1px] bg-neutral/[0.15]" />
+            <!-- <span class="h-full w-[1px] bg-neutral/[0.15]" /> -->
             <div class="border-0 h-full flex-1">
                 <slot />
             </div>

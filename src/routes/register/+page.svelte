@@ -23,9 +23,9 @@
                     <input type="text" name="first_name" placeholder="First Name" class="w-1/2 border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-md placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
                     <input type="text" name="last_name" placeholder="Last Name" class="w-1/2 border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-md placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >        
                 </div>
-                <input type="text" name="email" placeholder="Email" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
-                <input type="password" name="password" placeholder="Password" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
-                <input type="password" name="confirm_password" placeholder="Confirm Password" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
+                <input type="text" name="email" placeholder="Email" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-md placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
+                <input type="password" name="password" placeholder="Password" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-md placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
+                <input type="password" name="confirm_password" placeholder="Confirm Password" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-md placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
                 <button type="submit" class='bg-neutral/[.15] hover:bg-neutral/[.2]  rounded-lg h-14 p-4 text-lg'>Sign Up</button>
                 <p class="text-center text-sm">Already have an account? <a class="text-primary" href="/login">Login</a></p>
             </form>
