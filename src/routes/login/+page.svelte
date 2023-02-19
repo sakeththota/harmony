@@ -11,8 +11,9 @@
                 <h1 class="text-3xl font-semibold">Login</h1>
                 <input type="text" name="email" placeholder="Email" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
                 <input type="password" name="password" placeholder="Password" class="border-[1px] border-neutral/[.5] bg-transparent rounded-lg h-14 p-4 placeholder:text-lg placeholder:text-neutral/[0.35] focus:outline-none focus:ring-2 focus:ring-primary" >
-                <a href="/" class="text-right">Forgot password?</a>
+                <a href="/" class="text-right text-sm">Forgot password?</a>
                 <button type="submit" class='bg-neutral/[.15] hover:bg-neutral/[.2]  rounded-lg h-14 p-4 text-lg'>Login</button>
+                <p class="text-center text-sm">Don't have an account? <a class="text-primary" href="/register">Sign Up</a></p>
                 <div class="flex justify-evenly items-center gap-4 px-2">
                     <span class="h-0.5 bg-neutral/[.15] flex-1"/>
                     <p>Or</p>
@@ -26,7 +27,6 @@
                     <Icon icon="logos:google-icon" width=28/>
                     <p>Login w/ Google</p>
                 </a>
-                <p class="text-center">Don't have an account? <a class="text-primary" href="/register">Sign Up</a></p>
             </form>
         </div>
         <!-- some sort of advertising / marketing design -->

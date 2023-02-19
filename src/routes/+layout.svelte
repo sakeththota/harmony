@@ -8,6 +8,7 @@
       import PlaylistLink  from '$lib/components/PlaylistLink.svelte'
       import logo from '$lib/assets/harmony-logo.png';
       import type { PageData } from './$types';
+	import Notifications from "$lib/components/Notifications.svelte";
 
       onMount(() => {
             const { data: {subscription}} = supabase.auth.onAuthStateChange(()=>{
@@ -20,6 +21,8 @@
 
       export let data: PageData;
 </script>
+
+<Notifications />
 
 {#if $page.url.pathname === '/login' || $page.url.pathname === '/register'}
     <div class="h-screen w-screen">
