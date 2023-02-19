@@ -7,7 +7,9 @@ declare global {
 			supabase: TypedSupabaseClient;
 			session: Session | null;
 		}
-		// interface PageData {}
+		interface PageData {
+			playlists: string[];
+		}
 		// interface Platform {}
 	}
 }
