@@ -64,6 +64,19 @@
                         <Icon class="text-neutral/[0.5]" icon="material-symbols:arrow-back-rounded" height="24" />
                         <Breadcrumbs path={$page.url.pathname} />
                     </div>
+                    <!-- profile -->
+                    <div class="flex items-center gap-4 text-neutral">
+                        <!-- pfp -->
+                        <div >pfp</div>
+                        <!-- username -->
+                        <div>username</div>
+                        <!-- dropdown -->
+                        <form action="/logout" method="POST">
+                            <button type="submit">
+                                <Icon icon="material-symbols:keyboard-arrow-down-rounded" width="28"/>
+                            </button>
+                        </form>
+                    </div>
                 </div>
                 <slot />
             </div>

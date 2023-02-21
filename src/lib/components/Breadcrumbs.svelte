@@ -22,7 +22,7 @@
         {#if i == crumbs.length-1}
             <p class="text-neutral/[0.5]">{c.label}</p>
         {:else}
-            <a class="text-neutral/[0.15]" href={c.href}>{c.label}</a>
+            <a class="text-neutral/[0.15] hover:text-neutral/[0.5]" href={c.href}>{c.label}</a>
             <Icon class="text-neutral/[0.15]" icon="material-symbols:chevron-right-rounded" height="28" />
         {/if}
     {/each}
