@@ -1,5 +1,11 @@
 import { PUBLIC_SPOTIFY_CLIENT_ID } from '$env/static/public';
 
+class SpotifyWebAPI {
+	// client id / client secret
+	// access and refresh tokens
+	// redirect uri that matches spotify app
+}
+
 export const spotifyCreateAuthorizationUrl = (
 	redirect_uri: string,
 	scope: ReadonlyArray<string>,
