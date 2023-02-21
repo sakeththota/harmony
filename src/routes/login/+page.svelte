@@ -20,10 +20,6 @@
                     <span class="h-0.5 bg-neutral/[.15] flex-1" />
                 </div>
                 <a href='/' class="bg-neutral/[.15] hover:bg-neutral/[.2] rounded-full h-14 p-4 flex justify-center items-center text-lg gap-8">
-                    <Icon icon="logos:spotify-icon" width=28/>
-                    <p>Login w/ Spotify</p>
-                </a>
-                <a href='/' class="bg-neutral/[.15] hover:bg-neutral/[.2] rounded-full h-14 p-4 flex justify-center items-center text-lg gap-8">
                     <Icon icon="logos:google-icon" width=28/>
                     <p>Login w/ Google</p>
                 </a>
