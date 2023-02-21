@@ -26,6 +26,13 @@ export const actions: Actions = {
 			true
 		);
 		throw redirect(302, authUrl);
+	},
+	soundcloud: async ({ locals, url }) => {
+		console.log('hit soundcloud');
+		throw redirect(301, '/connect');
+	},
+	youtubemusic: async ({ locals, url }) => {
+		console.log('hit youtube music');
+		throw redirect(301, '/connect');
 	}
-	// soundcloud: async ({locals, url}) =>{}
 };

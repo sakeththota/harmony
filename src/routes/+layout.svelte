@@ -32,7 +32,7 @@
     <div class="bg-base-100 flex flex-col h-screen w-screen">
         <div class="flex items-center p-4 gap-2 h-full">
             <div class="flex flex-col items-start h-full w-52 pt-2 pb-4 pl-2 gap-4">
-                <img class="h-6" src={logo} alt="harmony logo"/>
+                <img class="h-6 " src={logo} alt="harmony logo"/>
                 <p class="text-primary font-bold -mb-2">Browse</p>
                 <div class="">
                     <NavButton active={$page.url.pathname === '/'} text='Home' icon='material-symbols:home-rounded' />
@@ -46,16 +46,17 @@
                 <p class="text-primary font-bold -mb-2">Playlists</p>
                 <div class="flex flex-col w-full overflow-y-scroll scrollbar-thin invisible hover:visible scrollbar-thumb-neutral/[0.15] scrollbar-track-transparent scrollbar-thumb-rounded-md">
                     <div class="flex flex-col w-full visible">
-                        {#each data.playlists as playlist}
+                        <!-- {#each data.playlists as playlist}
                             <PlaylistLink text={playlist} />
                         {/each}
                         <PlaylistLink text='' />
-                        <PlaylistLink text='' />
+                        <PlaylistLink text='' /> -->
                     </div>
                 </div>
             </div>
             <!-- <span class="h-full w-[1px] bg-neutral/[0.15]" /> -->
-            <div class="border-0 h-full flex-1">
+            <div class="flex flex-col h-full flex-1">
+                <div class="w-full h-11"></div>
                 <slot />
             </div>
             <span class="h-full w-[1px] bg-neutral/[0.15]" />
