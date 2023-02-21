@@ -8,7 +8,9 @@
       import PlaylistLink  from '$lib/components/PlaylistLink.svelte'
       import logo from '$lib/assets/harmony-logo.png';
       import type { PageData } from './$types';
+      import Breadcrumbs from '$lib/components/Breadcrumbs.svelte'
       import Notifications from "$lib/components/Notifications.svelte";
+      import Icon from '@iconify/svelte'
 
       onMount(() => {
             const { data: {subscription}} = supabase.auth.onAuthStateChange(()=>{
@@ -46,17 +48,24 @@
                 <p class="text-primary font-bold -mb-2">Playlists</p>
                 <div class="flex flex-col w-full overflow-y-scroll scrollbar-thin invisible hover:visible scrollbar-thumb-neutral/[0.15] scrollbar-track-transparent scrollbar-thumb-rounded-md">
                     <div class="flex flex-col w-full visible">
-                        <!-- {#each data.playlists as playlist}
+                        {#each data.playlists as playlist}
                             <PlaylistLink text={playlist} />
                         {/each}
                         <PlaylistLink text='' />
-                        <PlaylistLink text='' /> -->
+                        <PlaylistLink text='' />
                     </div>
                 </div>
             </div>
             <!-- <span class="h-full w-[1px] bg-neutral/[0.15]" /> -->
             <div class="flex flex-col h-full flex-1">
-                <div class="w-full h-11"></div>
+                
+                <div class="flex justify-between items-center w-full h-11">
+                    <!-- pull out into navigation component at some point -->
+                    <div class='flex items-center gap-4'>
+                        <Icon class="text-neutral/[0.5]" icon="material-symbols:arrow-back-rounded" height="24" />
+                        <Breadcrumbs path={$page.url.pathname} />
+                    </div>
+                </div>
                 <slot />
             </div>
             <span class="h-full w-[1px] bg-neutral/[0.15]" />
