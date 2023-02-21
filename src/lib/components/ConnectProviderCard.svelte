@@ -15,13 +15,13 @@
             <p>Coming Soon</p>
         </button>
     {:else if connected}
-        <button class="flex gap-2 items-center text-success" formaction="?/{action}" type="submit">
+        <button disabled class="flex gap-2 items-center text-success" formaction="?/{action}" type="submit">
             <Icon icon="ph:check-circle-fill" />
             <p>Connected</p>
         </button>
     {:else}
         <button class="flex gap-2 items-center" formaction="?/{action}" type="submit">
-            <p>Connect</p>
+            <p class="text-neutral/[0.5] hover:text-neutral">Connect</p>
         </button>
     {/if}
 </div>

@@ -57,8 +57,7 @@
                 </div>
             </div>
             <!-- <span class="h-full w-[1px] bg-neutral/[0.15]" /> -->
-            <div class="flex flex-col h-full flex-1">
-                
+            <div class="flex flex-col h-full flex-1 px-2">
                 <div class="flex justify-between items-center w-full h-11">
                     <!-- pull out into navigation component at some point -->
                     <div class='flex items-center gap-4'>
