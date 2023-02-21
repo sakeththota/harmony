@@ -8,7 +8,9 @@
       import PlaylistLink  from '$lib/components/PlaylistLink.svelte'
       import logo from '$lib/assets/harmony-logo.png';
       import type { PageData } from './$types';
+      import Breadcrumbs from '$lib/components/Breadcrumbs.svelte'
       import Notifications from "$lib/components/Notifications.svelte";
+      import Icon from '@iconify/svelte'
 
       onMount(() => {
             const { data: {subscription}} = supabase.auth.onAuthStateChange(()=>{
@@ -32,7 +34,7 @@
     <div class="bg-base-100 flex flex-col h-screen w-screen">
         <div class="flex items-center p-4 gap-2 h-full">
             <div class="flex flex-col items-start h-full w-52 pt-2 pb-4 pl-2 gap-4">
-                <img class="h-6" src={logo} alt="harmony logo"/>
+                <img class="h-6 " src={logo} alt="harmony logo"/>
                 <p class="text-primary font-bold -mb-2">Browse</p>
                 <div class="">
                     <NavButton active={$page.url.pathname === '/'} text='Home' icon='material-symbols:home-rounded' />
@@ -55,7 +57,27 @@
                 </div>
             </div>
             <!-- <span class="h-full w-[1px] bg-neutral/[0.15]" /> -->
-            <div class="border-0 h-full flex-1">
+            <div class="flex flex-col h-full flex-1 px-2">
+                <div class="flex justify-between items-center w-full h-11">
+                    <!-- pull out into navigation component at some point -->
+                    <div class='flex items-center gap-4'>
+                        <Icon class="text-neutral/[0.5]" icon="material-symbols:arrow-back-rounded" height="24" />
+                        <Breadcrumbs path={$page.url.pathname} />
+                    </div>
+                    <!-- profile -->
+                    <div class="flex items-center gap-4 text-neutral">
+                        <!-- pfp -->
+                        <div >pfp</div>
+                        <!-- username -->
+                        <div>username</div>
+                        <!-- dropdown -->
+                        <form action="/logout" method="POST">
+                            <button type="submit">
+                                <Icon icon="material-symbols:keyboard-arrow-down-rounded" width="28"/>
+                            </button>
+                        </form>
+                    </div>
+                </div>
                 <slot />
             </div>
             <span class="h-full w-[1px] bg-neutral/[0.15]" />

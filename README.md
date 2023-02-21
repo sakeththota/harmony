@@ -1,38 +1,88 @@
-# create-svelte
+<a name="readme-top"></a>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/sakeththota/harmony">
+    <img src="static/harmony-img.svg" width="50%" alt="Logo" >
+  </a>
 
-## Creating a project
+  <p align="center">
+    All of your music in one place.
+    <br />
+    <a href="https://github.com/sakeththota/harmony">View Demo</a>
+    ·
+    <a href="https://github.com/sakeththota/harmony/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/**sakeththota**/harmony/issues">Request Feature</a>
+  </p>
+</div>
 
-If you're seeing this, you've probably already done this step. Congrats!
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## About The Project
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-## Developing
+Harmony is a free music streaming app that allows users to listen to their favorite music streaming services in one place together.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-```bash
-npm run dev
+### Technologies
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+![Svelte](https://img.shields.io/badge/SvelteKit-FF3E00?style=for-the-badge&logo=Svelte&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 
-## Building
+### With Support For
 
-To create a production version of your app:
+<!-- ![Spotify](https://img.shields.io/badge/Spotify-1ED760?&style=for-the-badge&logo=spotify&logoColor=white) -->
+<!-- ![Soundcloud](https://img.shields.io/badge/SoundCloud-FF3300?style=for-the-badge&logo=soundcloud&logoColor=white) -->
 
-```bash
-npm run build
-```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-You can preview the production build with `npm run preview`.
+## Getting Started
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+### Prerequisites
+
+### Installation
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Usage
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Contact
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>

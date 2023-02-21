@@ -5,10 +5,12 @@ export const actions: Actions = {
 	register: async ({ request, locals }) => {
 		const body = Object.fromEntries(await request.formData());
 
+		console.log('gonna sign up');
 		const { data, error: err } = locals.supabase.auth.signUp({
 			email: body.email as string,
 			password: body.password as string
 		});
+		console.log('signed up');
 
 		if (err) {
 			if (err instanceof AuthApiError && err.status === 400) {

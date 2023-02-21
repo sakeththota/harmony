@@ -1,0 +1,3 @@
+- [ ] go through buttons to add prevent default
+- [ ] add dropdown for profile/settings/logout
+- [ ] go through app for slot cleanup
