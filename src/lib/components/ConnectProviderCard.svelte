@@ -1,27 +1,42 @@
 <script lang="ts">
-
-    import Icon from '@iconify/svelte'
-    export let connected: boolean | null;
-    export let icon: string;
-    export let title: string;
-
-    let action = title.toLowerCase().replace(/ /g, "")
+	import Icon from '@iconify/svelte';
+	export let connected: boolean | null;
+	export let icon: string;
+	export let label: string;
+	let action = label.toLowerCase().replace(/ /g, '');
 </script>
-<div class="flex flex-col gap-2 border-2 p-4 rounded-lg text-neutral border-neutral/[0.15] items-start w-1/6">
-    <Icon icon={icon} height="28" />
-    <p class="text-lg">{title}</p>
-    {#if connected === null}
-        <button disabled class="flex gap-2 items-center text-neutral/[0.15]" type="submit">
-            <p>Coming Soon</p>
-        </button>
-    {:else if connected}
-        <button disabled class="flex gap-2 items-center text-success" formaction="?/{action}" type="submit">
-            <Icon icon="ph:check-circle-fill" />
-            <p>Connected</p>
-        </button>
-    {:else}
-        <button class="flex gap-2 items-center" formaction="?/{action}" type="submit">
-            <p class="text-neutral/[0.5] hover:text-neutral">Connect</p>
-        </button>
-    {/if}
+
+<div
+	class="flex flex-col gap-2 border-2 p-4 rounded-lg text-neutral border-neutral/[0.15] items-start w-1/6"
+>
+	<Icon {icon} height="28" />
+	<p class="text-lg">
+		{label}
+	</p>
+	{#if $$slots.description}
+		<p class="text-sm">
+			<slot name="description" />
+		</p>
+	{/if}
+	<form method="POST">
+		<button
+			disabled={connected !== false}
+			class="flex gap-2 items-center {connected
+				? 'text-success'
+				: connected === null
+				? 'text-neutral/[0.15]'
+				: 'text-neutral/[0.5] hover:text-neutral'}"
+			type="submit"
+			formaction="?/{action}"
+		>
+			{#if connected === null}
+				<p>Coming Soon</p>
+			{:else if connected}
+				<Icon icon="ph:check-circle-fill" />
+				<p>Connected</p>
+			{:else}
+				<p>Connect</p>
+			{/if}
+		</button>
+	</form>
 </div>
