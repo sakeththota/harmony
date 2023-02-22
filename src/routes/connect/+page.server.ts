@@ -1,7 +1,8 @@
 import { spotifyCreateAuthorizationUrl } from '$lib/providers/spotify';
 import { redirect, type Actions } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 export const actions: Actions = {
-	spotify: async ({ locals, url }) => {
+	spotify: async () => {
 		const scope = [
 			'user-read-playback-state',
 			'user-modify-playback-state',
@@ -27,12 +28,22 @@ export const actions: Actions = {
 		);
 		throw redirect(302, authUrl);
 	},
-	soundcloud: async ({ locals, url }) => {
+	soundcloud: async () => {
 		console.log('hit soundcloud');
 		throw redirect(301, '/connect');
 	},
-	youtubemusic: async ({ locals, url }) => {
+	youtubemusic: async () => {
 		console.log('hit youtube music');
 		throw redirect(301, '/connect');
 	}
+};
+
+export const load: PageServerLoad = async ({ cookies }) => {
+	return {
+		connected: {
+			spotify: cookies.get('spotify') !== null,
+			soundcloud: false,
+			youtubemusic: null
+		}
+	};
 };

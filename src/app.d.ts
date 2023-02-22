@@ -6,9 +6,15 @@ declare global {
 		interface Locals {
 			supabase: TypedSupabaseClient;
 			session: Session | null;
+			spotify: string | null;
 		}
 		interface PageData {
 			playlists: string[];
+			connected: {
+				spotify: boolean | null;
+				soundcloud: boolean | null;
+				youtubemusic: boolean | null;
+			};
 		}
 		// interface Platform {}
 	}

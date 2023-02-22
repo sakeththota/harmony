@@ -39,11 +39,11 @@ export const GET: RequestHandler = async ({ url, locals, cookies }) => {
 
 	cookies.set('spotify', data['access_token'], {
 		path: '/',
-		httpOnly: true,
+		httpOnly: false,
 		sameSite: 'strict',
 		secure: process.env.NODE_ENV === 'production',
 		maxAge: 60 * 55
 	});
-
+	// return new Response(String('asdf'));
 	throw redirect(301, '/connect');
 };

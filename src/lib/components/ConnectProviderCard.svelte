@@ -7,7 +7,7 @@
 </script>
 
 <div
-	class="flex flex-col gap-2 border-2 p-4 rounded-lg text-neutral border-neutral/[0.15] items-start w-1/6"
+	class="flex w-1/6 flex-col items-start gap-2 rounded-lg border-2 border-neutral/[0.15] p-4 text-neutral"
 >
 	<Icon {icon} height="28" />
 	<p class="text-lg">
@@ -21,7 +21,7 @@
 	<form method="POST">
 		<button
 			disabled={connected !== false}
-			class="flex gap-2 items-center {connected
+			class="flex items-center gap-2 {connected
 				? 'text-success'
 				: connected === null
 				? 'text-neutral/[0.15]'
