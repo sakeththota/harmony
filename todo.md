@@ -1,3 +1,6 @@
 - [ ] go through buttons to add prevent default
 - [ ] add dropdown for profile/settings/logout
-- [ ] go through app for slot cleanup
+- [x] go through app for slot cleanup
+- [ ] go through app for server side cleanup
+- [ ] add progressive enhancement
+- [ ] add error pages

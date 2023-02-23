@@ -41,7 +41,7 @@ export const actions: Actions = {
 export const load: PageServerLoad = async ({ cookies }) => {
 	return {
 		connected: {
-			spotify: cookies.get('spotify') !== null,
+			spotify: cookies.get('spotify') !== undefined,
 			soundcloud: false,
 			youtubemusic: null
 		}

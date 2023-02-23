@@ -39,7 +39,7 @@ export const GET: RequestHandler = async ({ url, locals, cookies }) => {
 
 	cookies.set('spotify', data['access_token'], {
 		path: '/',
-		httpOnly: false,
+		httpOnly: true,
 		sameSite: 'strict',
 		secure: process.env.NODE_ENV === 'production',
 		maxAge: 60 * 55
