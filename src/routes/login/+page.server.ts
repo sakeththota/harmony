@@ -4,10 +4,11 @@ import { fail, redirect, type Actions } from '@sveltejs/kit';
 export const actions: Actions = {
 	login: async ({ request, locals }) => {
 		const body = Object.fromEntries(await request.formData());
-		const { data, error: err } = await locals.supabase.auth.signInWithPassword({
+		const { error: err } = await locals.supabase.auth.signInWithPassword({
 			email: body.email as string,
 			password: body.password as string
 		});
+
 		if (err) {
 			if (err instanceof AuthApiError && err.status == 400) {
 				return fail(400, {
@@ -15,7 +16,7 @@ export const actions: Actions = {
 				});
 			}
 			return fail(500, {
-				message: 'Server error. Try again later.'
+				error: 'Server error. Try again later.'
 			});
 		}
 		throw redirect(303, '/');

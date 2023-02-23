@@ -5,12 +5,14 @@ export const actions: Actions = {
 	register: async ({ request, locals }) => {
 		const body = Object.fromEntries(await request.formData());
 
-		console.log('gonna sign up');
-		const { data, error: err } = locals.supabase.auth.signUp({
+		if (body.password !== body.confirm_password) {
+			return fail(400, { error: "Password's do not match!" });
+		}
+
+		const { error: err } = locals.supabase.auth.signUp({
 			email: body.email as string,
 			password: body.password as string
 		});
-		console.log('signed up');
 
 		if (err) {
 			if (err instanceof AuthApiError && err.status === 400) {
@@ -19,9 +21,10 @@ export const actions: Actions = {
 				});
 			}
 			return fail(500, {
-				error: 'Serevr error. Please try again later.'
+				error: 'Server error. Please try again later.'
 			});
 		}
-		throw redirect(303, '/');
+
+		throw redirect(303, '/login');
 	}
 };
