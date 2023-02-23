@@ -29,7 +29,7 @@ export const GET: RequestHandler = async ({ url, locals, cookies }) => {
 	const code = url.searchParams.get('code') || null;
 
 	if (!code) throw error(400, 'Null authorization code.');
-	if (!locals.session) throw error(400, 'No harmony user logged in');
+	if (!locals.session.user) throw error(400, 'No harmony user logged in');
 
 	const { data, error: err } = await getSpotifyAccessToken(code);
 
@@ -44,6 +44,12 @@ export const GET: RequestHandler = async ({ url, locals, cookies }) => {
 	});
 
 	// store refresh token in db for this user
+	const { error: db_err } = await locals.supabase
+		.from('UserProviderConnections')
+		.update({ spotify_refresh: data['refresh_token'] })
+		.eq('id', locals.session.user.id);
+
+	if (db_err) throw error(500, 'Server error. Try again later.');
 
 	throw redirect(301, '/connect');
 };
