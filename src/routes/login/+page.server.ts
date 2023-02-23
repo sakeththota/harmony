@@ -19,6 +19,8 @@ export const actions: Actions = {
 				error: 'Server error. Try again later.'
 			});
 		}
+
+		// get refresh tokens from db to populate access tokens into cookies
 		throw redirect(303, '/');
 	}
 };

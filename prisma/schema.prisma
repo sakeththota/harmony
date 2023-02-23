@@ -10,6 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// model SpotifyCredentials {
-  
-// }
+// wanna trigger inserting this this whenever a new user is made
+// updated when connections are made
+model UserProviderConnections {
+  id Int @id
+  spotify_refresh String? @unique
+  soundcloud_refresh String? @unique
+}

@@ -1,4 +1,4 @@
-import { error, fail, redirect, type RequestHandler } from '@sveltejs/kit';
+import { error, redirect, type RequestHandler } from '@sveltejs/kit';
 import { PUBLIC_SPOTIFY_CLIENT_ID } from '$env/static/public';
 import { SPOTIFY_CLIENT_SECRET } from '$env/static/private';
 
@@ -33,7 +33,7 @@ export const GET: RequestHandler = async ({ url, locals, cookies }) => {
 
 	const { data, error: err } = await getSpotifyAccessToken(code);
 
-	if (err) return fail(500, { error: 'Server error. Try again later.' });
+	if (err) throw error(500, 'Server error. Try again later.');
 
 	cookies.set('spotify', data['access_token'], {
 		path: '/',
@@ -42,6 +42,8 @@ export const GET: RequestHandler = async ({ url, locals, cookies }) => {
 		secure: process.env.NODE_ENV === 'production',
 		maxAge: 60 * 55
 	});
+
+	// store refresh token in db for this user
 
 	throw redirect(301, '/connect');
 };
