@@ -27,7 +27,7 @@
 	class="flex h-full w-full items-center justify-center bg-gradient-to-tr from-accent via-secondary to-primary"
 >
 	<div
-		class="flex h-3/4 w-3/5 flex-row items-center justify-between gap-20 rounded-[25px] bg-[#141416] p-9 text-neutral"
+		class="flex h-3/4 w-3/5 flex-row items-center justify-between gap-20 rounded-[25px] bg-[#141416] p-9 text-neutral drop-shadow-2xl"
 	>
 		<!-- register form wrapper -->
 		<div class="flex h-full w-1/2 items-center justify-center ">

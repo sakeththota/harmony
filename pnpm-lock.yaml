@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@iconify/svelte': ^3.1.0
+  '@prisma/client': ^4.10.1
   '@supabase/auth-helpers-sveltekit': ^0.8.7
   '@supabase/supabase-js': ^2.8.0
   '@sveltejs/adapter-auto': ^2.0.0
@@ -26,6 +27,7 @@ specifiers:
   vite: ^4.0.0
 
 dependencies:
+  '@prisma/client': 4.10.1_prisma@4.10.1
   '@supabase/auth-helpers-sveltekit': 0.8.7_h4fmw4dd6b3xkulak4k3c7hqqu
   '@supabase/supabase-js': 2.8.0
 
@@ -343,10 +345,27 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
+  /@prisma/client/4.10.1_prisma@4.10.1:
+    resolution: {integrity: sha512-VonXLJZybdt8e5XZH5vnIGCRNnIh6OMX1FS3H/yzMGLT3STj5TJ/OkMcednrvELgk8PK89Vo3aSh51MWNO0axA==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19
+      prisma: 4.10.1
+    dev: false
+
+  /@prisma/engines-version/4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19:
+    resolution: {integrity: sha512-tsjTho7laDhf9EJ9EnDxAPEf7yrigSMDhniXeU4YoWc7azHAs4GPxRi2P9LTFonmHkJLMOLjR77J1oIP8Ife1w==}
+    dev: false
+
   /@prisma/engines/4.10.1:
     resolution: {integrity: sha512-B3tcTxjx196nuAu1GOTKO9cGPUgTFHYRdkPkTS4m5ptb2cejyBlH9X7GOfSt3xlI7p4zAJDshJP4JJivCg9ouA==}
     requiresBuild: true
-    dev: true
 
   /@supabase/auth-helpers-shared/0.2.4_h4fmw4dd6b3xkulak4k3c7hqqu:
     resolution: {integrity: sha512-c+hi3N6DhjPTzjXGOokre4gmMZOqt0f1ORrwZwi2s07pk3cbkmn77DwwVtlYMNi3oZNYRQqAfxJu83UzpJrrmg==}
@@ -1812,7 +1831,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@prisma/engines': 4.10.1
-    dev: true
 
   /punycode/2.3.0:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
