@@ -33,9 +33,7 @@ export const GET: RequestHandler = async ({ url, locals, cookies }) => {
 
 	const { data, error: err } = await getSpotifyAccessToken(code);
 
-	if (err) {
-		return fail(500, { error: 'Something went wrong getting access to Spotify :(' });
-	}
+	if (err) return fail(500, { error: 'Server error. Try again later.' });
 
 	cookies.set('spotify', data['access_token'], {
 		path: '/',
@@ -44,6 +42,6 @@ export const GET: RequestHandler = async ({ url, locals, cookies }) => {
 		secure: process.env.NODE_ENV === 'production',
 		maxAge: 60 * 55
 	});
-	// return new Response(String('asdf'));
+
 	throw redirect(301, '/connect');
 };
