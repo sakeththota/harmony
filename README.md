@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/sakeththota/harmony">
-    <img src="static/harmony-img.svg" width="50%" alt="Logo" >
+    <img src="src/lib/assets/harmony-icon.svg" width="25%" alt="Logo" >
   </a>
 
   <p align="center">
