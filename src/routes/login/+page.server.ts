@@ -3,7 +3,7 @@ import { fail, redirect, type Actions } from '@sveltejs/kit';
 import { PUBLIC_SPOTIFY_CLIENT_ID } from '$env/static/public';
 import { SPOTIFY_CLIENT_SECRET } from '$env/static/private';
 
-const getSpotifyAccessToken = async (refresh_token: string) => {
+const getNewSpotifyAccessToken = async (refresh_token: string) => {
 	try {
 		const data = await fetch('https://accounts.spotify.com/api/token', {
 			body: new URLSearchParams({
@@ -29,18 +29,18 @@ const getSpotifyAccessToken = async (refresh_token: string) => {
 export const actions: Actions = {
 	login: async ({ request, locals, cookies }) => {
 		const body = Object.fromEntries(await request.formData());
-		const { data, error: err } = await locals.supabase.auth.signInWithPassword({
+		const { data: auth_data, error: auth_err } = await locals.supabase.auth.signInWithPassword({
 			email: body.email as string,
 			password: body.password as string
 		});
 
-		if (err) {
-			if (err instanceof AuthApiError && err.status == 400) {
-				return fail(400, {
+		if (auth_err) {
+			if (auth_err instanceof AuthApiError && auth_err.status == 400) {
+				throw fail(400, {
 					error: 'Invalid credentials'
 				});
 			}
-			return fail(500, {
+			throw fail(500, {
 				error: 'Server error. Try again later.'
 			});
 		}
@@ -48,11 +48,26 @@ export const actions: Actions = {
 		const { data: db_data, error: db_err } = await locals.supabase
 			.from('UserProviderConnections')
 			.select()
-			.eq('id', data.user.id)
+			.eq('id', auth_data.user.id)
 			.single();
 
-		const { data: data2, error: err2 } = await getSpotifyAccessToken(db_data.spotify_refresh);
-		cookies.set('spotify', data2['access_token'], {
+		if (db_err) {
+			throw fail(500, {
+				error: 'Server error. Try again later.'
+			});
+		}
+
+		const { data: token_data, error: token_err } = await getNewSpotifyAccessToken(
+			db_data.spotify_refresh
+		);
+
+		if (token_err) {
+			throw fail(400, {
+				error: "Couldn't get spotify connection. Try reconnecting."
+			});
+		}
+
+		cookies.set('spotify', token_data['access_token'], {
 			path: '/',
 			httpOnly: true,
 			sameSite: 'strict',
@@ -60,7 +75,6 @@ export const actions: Actions = {
 			maxAge: 60 * 55
 		});
 
-		// get refresh tokens from db to populate access tokens into cookies
 		throw redirect(303, '/');
 	}
 };

@@ -6,7 +6,7 @@ export const actions: Actions = {
 		const body = Object.fromEntries(await request.formData());
 
 		if (body.password !== body.confirm_password) {
-			return fail(400, { error: "Password's do not match!" });
+			throw fail(400, { error: "Password's do not match!" });
 		}
 
 		const { error: err } = locals.supabase.auth.signUp({
@@ -16,11 +16,11 @@ export const actions: Actions = {
 
 		if (err) {
 			if (err instanceof AuthApiError && err.status === 400) {
-				return fail(400, {
+				throw fail(400, {
 					error: 'Invalid email or password'
 				});
 			}
-			return fail(500, {
+			throw fail(500, {
 				error: 'Server error. Please try again later.'
 			});
 		}

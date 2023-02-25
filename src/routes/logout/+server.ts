@@ -6,7 +6,7 @@ export const POST: RequestHandler = async ({ locals, cookies }) => {
 	const { error: err } = await locals.supabase.auth.signOut();
 
 	if (err) {
-		throw error(500, 'Something went wrong logging you out.');
+		throw error(500, 'There was a problem logging user out.');
 	}
 
 	throw redirect(303, '/');

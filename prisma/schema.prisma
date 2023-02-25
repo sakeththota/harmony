@@ -14,7 +14,7 @@ datasource db {
 // wanna trigger inserting this this whenever a new user is made
 // updated when connections are made
 model UserProviderConnections {
-  id String @db.Uuid @unique
+  id String @id @db.Uuid
   spotify_refresh String?
   soundcloud_refresh String?
 }
