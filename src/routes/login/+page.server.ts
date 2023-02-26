@@ -36,11 +36,11 @@ export const actions: Actions = {
 
 		if (auth_err) {
 			if (auth_err instanceof AuthApiError && auth_err.status == 400) {
-				throw fail(400, {
+				return fail(400, {
 					error: 'Invalid credentials'
 				});
 			}
-			throw fail(500, {
+			return fail(500, {
 				error: 'Server error. Try again later.'
 			});
 		}
@@ -52,7 +52,7 @@ export const actions: Actions = {
 			.single();
 
 		if (db_err) {
-			throw fail(500, {
+			return fail(500, {
 				error: 'Server error. Try again later.'
 			});
 		}
@@ -62,18 +62,20 @@ export const actions: Actions = {
 		);
 
 		if (token_err) {
-			throw fail(400, {
+			return fail(400, {
 				error: "Couldn't get spotify connection. Try reconnecting."
 			});
 		}
 
-		cookies.set('spotify', token_data['access_token'], {
-			path: '/',
-			httpOnly: true,
-			sameSite: 'strict',
-			secure: process.env.NODE_ENV === 'production',
-			maxAge: 60 * 55
-		});
+		if (token_data['access_token']) {
+			cookies.set('spotify', token_data['access_token'], {
+				path: '/',
+				httpOnly: true,
+				sameSite: 'strict',
+				secure: process.env.NODE_ENV === 'production',
+				maxAge: 60 * 55
+			});
+		}
 
 		throw redirect(303, '/');
 	}

@@ -1,6 +1,7 @@
 import type { LayoutServerLoad } from './$types';
 
-export const load: LayoutServerLoad = ({ cookies }) => {
+export const load: LayoutServerLoad = () => {
+	return { playlists: [] };
 	return {
 		playlists: [
 			'AAAAHHHH',
