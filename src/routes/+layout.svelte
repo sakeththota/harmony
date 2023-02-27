@@ -21,7 +21,7 @@
 		};
 	});
 
-	export let data: PageData;
+	let playlists: any[] = [];
 </script>
 
 <Notifications />
@@ -34,9 +34,12 @@
 	<div class="flex h-screen w-screen flex-col bg-base-100">
 		<div class="flex h-full items-center gap-2 p-4">
 			<SideNavbar>
-				{#each data.playlists as playlist}
+				{#each playlists as playlist}
 					<PlaylistLink text={playlist} />
 				{/each}
+				<!-- hacky fix for playlist scroll to be completely seen :) -->
+				<PlaylistLink text="" />
+				<PlaylistLink text="" />
 			</SideNavbar>
 			<!-- <span class="h-full w-[1px] bg-neutral/[0.15]" /> -->
 			<PageView>

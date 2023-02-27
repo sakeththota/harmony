@@ -2,7 +2,6 @@
 	import NavItem from '$lib/components/NavItem.svelte';
 	import PlaylistLink from '$lib/components/PlaylistLink.svelte';
 	import logo from '$lib/assets/harmony-logo.png';
-	import { page } from '$app/stores';
 </script>
 
 <div class="flex h-full w-52 flex-col items-start gap-4 pt-2 pb-4 pl-2">
@@ -23,9 +22,6 @@
 	>
 		<div class="visible flex w-full flex-col">
 			<slot />
-			<!-- hacky fix for playlist scroll to be completely seen :) -->
-			<PlaylistLink text="" />
-			<PlaylistLink text="" />
 		</div>
 	</div>
 </div>

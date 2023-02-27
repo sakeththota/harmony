@@ -6,7 +6,6 @@ declare global {
 		interface Locals {
 			supabase: TypedSupabaseClient;
 			session: Session | null;
-			spotify: string | null;
 		}
 		interface PageData {
 			playlists: string[];

@@ -1,29 +1,5 @@
 import { error, redirect, type RequestHandler } from '@sveltejs/kit';
-import { PUBLIC_SPOTIFY_CLIENT_ID } from '$env/static/public';
-import { SPOTIFY_CLIENT_SECRET } from '$env/static/private';
-
-const getSpotifyAccessToken = async (code: string) => {
-	try {
-		const data = await fetch('https://accounts.spotify.com/api/token', {
-			body: new URLSearchParams({
-				grant_type: 'authorization_code',
-				code: code,
-				redirect_uri: 'http://localhost:5173/connect/spotify'
-			}),
-			headers: {
-				Authorization: `Basic ${Buffer.from(
-					`${PUBLIC_SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`
-				).toString('base64')}`,
-				'Content-Type': 'application/x-www-form-urlencoded'
-			},
-			method: 'POST'
-		}).then(async (data) => await data.json());
-		return { data, error: null };
-	} catch (error) {
-		console.error(error);
-		return { data: null, error };
-	}
-};
+import { getSpotifyAccessToken } from '$lib/providers/spotify';
 
 export const GET: RequestHandler = async ({ url, locals, cookies }) => {
 	const code = url.searchParams.get('code') || null;

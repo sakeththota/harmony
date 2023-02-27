@@ -1,27 +1,14 @@
 import type { LayoutServerLoad } from './$types';
 
-export const load: LayoutServerLoad = () => {
-	return { playlists: [] };
+export const load: LayoutServerLoad = async ({ cookies }) => {
+	const spotify_access_token = cookies.get('spotify') || false;
+	const soundcloud_access_token = cookies.get('soundcloud') || false;
+
 	return {
-		playlists: [
-			'AAAAHHHH',
-			'homey',
-			'dev 2.',
-			'music++;',
-			'mix.',
-			'spring vibes',
-			"sak's monthly: feb23",
-			'2am living room music melodies',
-			'My kinda party',
-			'Bollywoodity',
-			'2000s house party',
-			"sak's monthly: jan23",
-			'Uhh',
-			"sak's monthly: dec23",
-			'clout',
-			'bangers',
-			'Redemption',
-			'Your Top Songs 2022'
-		]
+		connected: {
+			spotify: spotify_access_token,
+			soundcloud: soundcloud_access_token,
+			youtubemusic: null
+		}
 	};
 };

@@ -16,13 +16,3 @@ export const actions: Actions = {
 		// throw redirect(301, '/connect');
 	}
 };
-
-export const load: PageServerLoad = async ({ cookies }) => {
-	return {
-		connected: {
-			spotify: cookies.get('spotify') !== undefined,
-			soundcloud: false,
-			youtubemusic: null
-		}
-	};
-};

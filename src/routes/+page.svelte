@@ -12,7 +12,7 @@
 
 <div class="flex h-full w-full flex-col gap-2 p-2 text-neutral">
 	<p class="text-2xl font-bold text-neutral">Good {timeOfDay}</p>
-	<div class="jutify-center flex h-1/3 w-full gap-6">
+	<!-- <div class="jutify-center flex h-1/3 w-full gap-6">
 		<a href="playlists/discover-weekly">
 			<div
 				class=" flex h-full flex-col justify-between rounded-2xl bg-gradient-to-r from-primary to-secondary p-6"
@@ -42,5 +42,5 @@
 		</a>
 	</div>
 	<p class="text-2xl font-bold text-neutral">Recently played</p>
-	<p class="text-2xl font-bold text-neutral">More of what you like</p>
+	<p class="text-2xl font-bold text-neutral">More of what you like</p> -->
 </div>
