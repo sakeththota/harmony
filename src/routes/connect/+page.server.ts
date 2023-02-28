@@ -1,18 +1,14 @@
 import { spotifyGetAuthorizationUrl } from '$lib/providers/spotify';
 import { redirect, type Actions } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
 
 export const actions: Actions = {
 	spotify: async () => {
-		const authUrl = spotifyGetAuthorizationUrl();
-		throw redirect(302, authUrl);
+		throw redirect(302, spotifyGetAuthorizationUrl());
 	},
 	soundcloud: async () => {
 		console.log('hit soundcloud');
-		// throw redirect(301, '/connect');
 	},
 	youtubemusic: async () => {
 		console.log('hit youtube music');
-		// throw redirect(301, '/connect');
 	}
 };

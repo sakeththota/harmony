@@ -4,8 +4,8 @@
 	import { invalidateAll } from '$app/navigation';
 	import { supabase } from '$lib/supabase';
 	import { page } from '$app/stores';
+	import { trpc } from '$lib/trpc/client';
 	import SideNavbar from '$lib/components/SideNavbar.svelte';
-	import type { PageData } from './$types';
 	import Notifications from '$lib/components/Notifications.svelte';
 	import PlaylistLink from '$lib/components/PlaylistLink.svelte';
 	import PageView from '$lib/components/PageView.svelte';

@@ -7,7 +7,7 @@
 </script>
 
 <div class="flex h-full flex-1 flex-col px-2">
-	<div class="flex h-11 w-full items-center justify-between">
+	<div class="relative flex h-11 w-full items-center justify-between">
 		<!-- pull out into navigation component at some point -->
 		<div class="flex items-center gap-4">
 			<Icon class="text-neutral/[0.5]" icon="material-symbols:arrow-back-rounded" height="24" />
@@ -28,9 +28,12 @@
 				/>
 			</button>
 			{#if dropdownOpen}
-				<form action="logout" method="POST">
-					<button type="submit">Log Out</button>
-				</form>
+				<div class="absolute top-11 right-0 flex h-10 w-52 flex-col border-2">
+					<form action="logout" method="POST">
+						<button type="submit">Log Out</button>
+					</form>
+					<a href="/connect">Connect</a>
+				</div>
 			{/if}
 		</div>
 	</div>
