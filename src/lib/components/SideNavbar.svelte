@@ -6,13 +6,13 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 
-	let playlists;
+	let playlists: string[];
 	const getLatestPlaylists = async () => {
 		playlists = await trpc($page).getUserPlaylists.query();
 	};
 
-	onMount(() => {
-		getLatestPlaylists();
+	onMount(async () => {
+		await getLatestPlaylists();
 	});
 </script>
 
@@ -24,7 +24,11 @@
 		<NavItem href="/search" icon="material-symbols:search-rounded">Search</NavItem>
 		<NavItem href="/library" icon="material-symbols:library-music-rounded">Library</NavItem>
 		<div class="h-8" />
-		<NavItem href="/playlist/create" icon="material-symbols:add">Create Playlist</NavItem>
+		<NavItem
+			on:click={() => getLatestPlaylists()}
+			href="/playlist/create"
+			icon="material-symbols:add">Create Playlist</NavItem
+		>
 		<NavItem href="/likes" icon="mdi:cards-heart">Liked Songs</NavItem>
 		<NavItem href="/jukebox" icon="material-symbols:speaker">Jukebox</NavItem>
 	</div>
@@ -33,7 +37,13 @@
 		class="invisible flex w-full flex-col overflow-y-scroll scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral/[0.15] scrollbar-thumb-rounded-md hover:visible"
 	>
 		<div class="visible flex w-full flex-col">
-			{playlists}
+			{#if playlists?.length}
+				{#each playlists as playlist}
+					<PlaylistLink text={playlist} />
+				{/each}
+				<PlaylistLink text="" />
+				<PlaylistLink text="" />
+			{/if}
 		</div>
 	</div>
 </div>

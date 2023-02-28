@@ -10,6 +10,7 @@ specifiers:
   '@sveltejs/kit': ^1.5.0
   '@trpc/client': ^10.13.0
   '@trpc/server': ^10.13.0
+  '@types/spotify-api': ^0.0.20
   '@types/ws': ^8.5.4
   '@typescript-eslint/eslint-plugin': ^5.45.0
   '@typescript-eslint/parser': ^5.45.0
@@ -39,6 +40,7 @@ dependencies:
   '@sveltejs/adapter-node': 1.2.0_@sveltejs+kit@1.7.1
   '@trpc/client': 10.13.0_@trpc+server@10.13.0
   '@trpc/server': 10.13.0
+  '@types/spotify-api': 0.0.20
   '@types/ws': 8.5.4
   trpc-sveltekit: 3.4.2_wazxat3ehptqnii6bifqrsnjom
   ws: 8.12.1
@@ -604,6 +606,10 @@ packages:
   /@types/semver/7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
     dev: true
+
+  /@types/spotify-api/0.0.20:
+    resolution: {integrity: sha512-HRBwiOthYAT0r/vUQlGlNTdXMnPg/CS3MzTuQKDy2PtalUDXhj0Ep9YZ4tXmL68K0j7FMcLFcYTzy7k7nVu5mg==}
+    dev: false
 
   /@types/ws/8.5.4:
     resolution: {integrity: sha512-zdQDHKUgcX/zBc4GrwsE/7dVdAD8JR4EuiAXiiUhhfyIJXXb2+PrGshFyeXWQPMmmZ2XxgaqclgpIC7eTXc1mg==}

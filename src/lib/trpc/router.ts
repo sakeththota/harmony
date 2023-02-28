@@ -10,8 +10,8 @@ export const router = t.router({
 	}),
 	getUserPlaylists: t.procedure.query(async ({ ctx: { spotify_token } }) => {
 		if (!spotify_token) return [];
-		const { data, error } = await getSpotifyUserPlaylists(spotify_token);
-		if (error) return [];
+		const { data } = await getSpotifyUserPlaylists(spotify_token);
+		if (!data) return [];
 		return data.map((playlist) => playlist.name);
 	})
 });

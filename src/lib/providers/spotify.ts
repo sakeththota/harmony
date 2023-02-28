@@ -78,13 +78,18 @@ export const refreshSpotifyAccessToken = async (refresh_token: string) => {
 
 export const getSpotifyUserPlaylists = async (access_token: string) => {
 	try {
-		const data = await fetch('https://api.spotify.com/v1/me/playlists', {
-			headers: {
-				Authorization: `Bearer ${access_token}`
-			},
-			method: 'GET'
-		}).then(async (data) => (await data.json()).items);
-		return { data, error: null };
+		const data: SpotifyApi.ListOfCurrentUsersPlaylistsResponse = await fetch(
+			'https://api.spotify.com/v1/me/playlists',
+			{
+				headers: {
+					Authorization: `Bearer ${access_token}`
+				},
+				method: 'GET'
+			}
+		).then(
+			async (data): Promise<SpotifyApi.ListOfCurrentUsersPlaylistsResponse> => await data.json()
+		);
+		return { data: data.items, error: null };
 	} catch (error) {
 		console.error(error);
 		return { data: null, error };
