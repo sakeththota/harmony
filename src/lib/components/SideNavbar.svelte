@@ -1,7 +1,19 @@
 <script lang="ts">
 	import NavItem from '$lib/components/NavItem.svelte';
 	import PlaylistLink from '$lib/components/PlaylistLink.svelte';
+	import { trpc } from '$lib/trpc/client';
 	import logo from '$lib/assets/harmony-logo.png';
+	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+
+	let playlists;
+	const getLatestPlaylists = async () => {
+		playlists = await trpc($page).getUserPlaylists.query();
+	};
+
+	onMount(() => {
+		getLatestPlaylists();
+	});
 </script>
 
 <div class="flex h-full w-52 flex-col items-start gap-4 pt-2 pb-4 pl-2">
@@ -21,7 +33,7 @@
 		class="invisible flex w-full flex-col overflow-y-scroll scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral/[0.15] scrollbar-thumb-rounded-md hover:visible"
 	>
 		<div class="visible flex w-full flex-col">
-			<slot />
+			{playlists}
 		</div>
 	</div>
 </div>

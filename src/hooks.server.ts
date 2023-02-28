@@ -14,16 +14,16 @@ const handleUser: Handle = async ({ event, resolve }) => {
 	event.locals.supabase = supabaseClient;
 	event.locals.session = session;
 
-	if (event.locals.session) {
-		if (event.url.pathname.startsWith('/login')) {
-			throw redirect(302, '/');
-		}
-		if (event.url.pathname.startsWith('/register')) {
-			throw redirect(302, '/');
-		}
-	} else {
-		throw redirect(302, '/login');
-	}
+	// if (event.locals.session) {
+	// 	if (event.url.pathname.startsWith('/login')) {
+	// 		throw redirect(302, '/');
+	// 	}
+	// 	if (event.url.pathname.startsWith('/register')) {
+	// 		throw redirect(302, '/');
+	// 	}
+	// } else {
+	// 	throw redirect(302, '/login');
+	// }
 
 	return await resolve(event);
 };
