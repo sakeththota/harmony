@@ -9,10 +9,13 @@ export const router = t.router({
 		return `Hello tRPC v10 @ ${new Date().toLocaleTimeString()}`;
 	}),
 	getUserPlaylists: t.procedure.query(async ({ ctx: { spotify_token } }) => {
+		// add a middleware instead of this for these endpoints!!
 		if (!spotify_token) return [];
 		const { data } = await getSpotifyUserPlaylists(spotify_token);
 		if (!data) return [];
-		return data.map((playlist) => playlist.name);
+		return data.map((playlist) => {
+			return { name: playlist.name, id: playlist.id };
+		});
 	})
 });
 

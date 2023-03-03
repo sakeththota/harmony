@@ -1,5 +1,10 @@
-<script lang='ts'>
-    export let text: string;
+<script lang="ts">
+	export let text: string;
+	export let href: string;
 </script>
 
-<button class="flex-none truncate text-left h-8 text-neutral/[0.5] hover:text-neutral/[0.75] text-sm px-4 min">{text}</button>
+<a
+	{href}
+	class="min h-8 flex-none truncate px-4 text-left text-sm text-neutral/[0.5] hover:text-neutral/[0.75]"
+	>{text}</a
+>

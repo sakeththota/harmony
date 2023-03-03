@@ -6,7 +6,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 
-	let playlists: string[];
+	let playlists: { name: string; id: string }[];
 	const getLatestPlaylists = async () => {
 		playlists = await trpc($page).getUserPlaylists.query();
 	};
@@ -39,10 +39,10 @@
 		<div class="visible flex w-full flex-col">
 			{#if playlists?.length}
 				{#each playlists as playlist}
-					<PlaylistLink text={playlist} />
+					<PlaylistLink href="/playlists/spotify/{playlist.id}" text={playlist.name} />
 				{/each}
-				<PlaylistLink text="" />
-				<PlaylistLink text="" />
+				<PlaylistLink href="/" text="" />
+				<PlaylistLink href="/" text="" />
 			{/if}
 		</div>
 	</div>
