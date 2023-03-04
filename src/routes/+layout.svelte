@@ -18,8 +18,6 @@
 			subscription.unsubscribe();
 		};
 	});
-
-	let playlists: any[] = [];
 </script>
 
 <Notifications />
