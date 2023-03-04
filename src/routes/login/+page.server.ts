@@ -1,6 +1,8 @@
 import { AuthApiError } from '@supabase/supabase-js';
 import { fail, redirect, type Actions } from '@sveltejs/kit';
-import { refreshSpotifyAccessToken } from '$lib/providers/spotify';
+import { refreshOAuth2AccessToken } from '$lib/oauth2/helpers';
+import { PUBLIC_SPOTIFY_CLIENT_ID } from '$env/static/public';
+import { SPOTIFY_CLIENT_SECRET } from '$env/static/private';
 
 export const actions: Actions = {
 	login: async ({ request, locals, cookies }) => {
@@ -33,8 +35,11 @@ export const actions: Actions = {
 			});
 		}
 
-		const { data: token_data, error: token_err } = await refreshSpotifyAccessToken(
-			db_data.spotify_refresh
+		const { data: token_data, error: token_err } = await refreshOAuth2AccessToken(
+			'https://accounts.spotify.com/api/token',
+			db_data.spotify_refresh,
+			PUBLIC_SPOTIFY_CLIENT_ID,
+			SPOTIFY_CLIENT_SECRET
 		);
 
 		if (token_err) {
