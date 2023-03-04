@@ -5,14 +5,14 @@
 	import logo from '$lib/assets/harmony-logo.png';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { TRPCError } from '@trpc/server';
+	import { TRPCClientError } from '@trpc/client';
 
 	let playlists: { name: string; id: string }[];
 	const getLatestPlaylists = async () => {
 		try {
 			playlists = await trpc($page).getUserPlaylists.query();
 		} catch (error) {
-			if (error instanceof TRPCError) playlists = [];
+			if (error instanceof TRPCClientError) playlists = [];
 			else throw error;
 		}
 	};
