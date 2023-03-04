@@ -31,16 +31,16 @@
 				<div
 					class="absolute top-11 right-0 flex h-24 w-44 flex-col gap-2 rounded-lg  bg-neutral/[0.1] p-2 text-neutral/[0.5] shadow-2xl"
 				>
-					<div class="flex h-8 items-center rounded-sm px-2 hover:bg-neutral/[0.15]">
-						<a href="/connect">Connect</a>
-					</div>
+					<a href="/connect">
+						<div class="flex h-8 items-center rounded-sm px-2 hover:bg-neutral/[0.15]">Connect</div>
+					</a>
 					<hr class="border-neutral/[0.15]" />
 					<form
 						class="flex h-8 items-center rounded-sm px-2 hover:bg-neutral/[0.15]"
 						action="logout"
 						method="POST"
 					>
-						<button type="submit">Log Out</button>
+						<button class="w-full text-start" type="submit">Log Out</button>
 					</form>
 				</div>
 			{/if}
