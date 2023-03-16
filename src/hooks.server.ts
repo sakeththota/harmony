@@ -1,20 +1,31 @@
 import '$lib/supabase';
 import { redirect, type Handle } from '@sveltejs/kit';
+import { createContext } from '$lib/trpc/context';
+import { router } from '$lib/trpc/router';
+import { createTRPCHandle } from 'trpc-sveltekit';
 import { getSupabase } from '@supabase/auth-helpers-sveltekit';
+import { sequence } from '@sveltejs/kit/hooks';
 
-export const handle: Handle = async ({ event, resolve }) => {
+const handleTRPC: Handle = createTRPCHandle({ router, createContext });
+
+const handleUser: Handle = async ({ event, resolve }) => {
 	const { supabaseClient, session } = await getSupabase(event);
 
 	event.locals.supabase = supabaseClient;
 	event.locals.session = session;
 
-	if (event.url.pathname.startsWith('/login') || event.url.pathname.startsWith('/register')) {
-		if (event.locals.session) throw redirect(303, '/');
+	console.log(event.url.pathname);
+	if (event.locals.session) {
+		// logged in users can't access /login or /register until they logout
+		if (event.url.pathname.startsWith('/login')) throw redirect(302, '/');
+		if (event.url.pathname.startsWith('/register')) throw redirect(302, '/');
 	} else {
-		if (!event.locals.session) throw redirect(303, '/login');
+		// not logged in users must login first
+		if (event.url.pathname !== '/login' && event.url.pathname !== '/register')
+			throw redirect(302, '/login');
 	}
 
-	const response = await resolve(event);
-
-	return response;
+	return await resolve(event);
 };
+
+export const handle = sequence(handleTRPC, handleUser);

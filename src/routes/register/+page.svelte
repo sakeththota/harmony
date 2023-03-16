@@ -8,7 +8,7 @@
 				case 'redirect':
 					toast({
 						type: 'success',
-						message: 'Successfully created your account! Check your email for verification.'
+						message: `Verification email has been sent to ${data.get('email')}.`
 					});
 					break;
 				case 'failure':

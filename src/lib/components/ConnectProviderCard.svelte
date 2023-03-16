@@ -18,25 +18,23 @@
 			<slot name="description" />
 		</p>
 	{/if}
-	<form method="POST">
-		<button
-			disabled={connected !== false}
-			class="flex items-center gap-2 {connected
-				? 'text-success'
-				: connected === null
-				? 'text-neutral/[0.15]'
-				: 'text-neutral/[0.5] hover:text-neutral'}"
-			type="submit"
-			formaction="?/{action}"
-		>
-			{#if connected === null}
-				<p>Coming Soon</p>
-			{:else if connected}
-				<Icon icon="ph:check-circle-fill" />
-				<p>Connected</p>
-			{:else}
-				<p>Connect</p>
-			{/if}
-		</button>
-	</form>
+	<button
+		disabled={connected !== false}
+		class="flex items-center gap-2 {connected
+			? 'text-success'
+			: connected === null
+			? 'text-neutral/[0.15]'
+			: 'text-neutral/[0.5] hover:text-neutral'}"
+		type="submit"
+		formaction="?/{action}"
+	>
+		{#if connected === null}
+			<p>Coming Soon</p>
+		{:else if connected}
+			<Icon icon="ph:check-circle-fill" />
+			<p>Connected</p>
+		{:else}
+			<p>Connect</p>
+		{/if}
+	</button>
 </div>
