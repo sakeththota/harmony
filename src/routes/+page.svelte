@@ -1,4 +1,9 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import { trpc } from '$lib/trpc/client';
+	import type { Playlist } from 'spotify-web-api-ts/types/types/SpotifyObjects';
+	import { onMount } from 'svelte';
+	import PlaylistCard from '$lib/components/PlaylistCard.svelte';
 	var curHr = new Date().getHours();
 	let timeOfDay = '';
 	if (curHr < 12) {
@@ -8,39 +13,29 @@
 	} else {
 		timeOfDay = 'evening';
 	}
+
+	// const getRecentlyPlayed = async () => {}
+
+	// const getReccomendations = async () => {}
+
+	let discover_weekly: Playlist;
+	let release_radar: Playlist;
+	const getDiscover = async () => {
+		discover_weekly = await trpc($page).getDiscoverWeekly.query();
+		release_radar = await trpc($page).getReleaseRadar.query();
+	};
+
+	onMount(async () => {
+		await getDiscover();
+	});
 </script>
 
 <div class="flex h-full w-full flex-col gap-2 p-2 text-neutral">
 	<p class="text-2xl font-bold text-neutral">Good {timeOfDay}</p>
-	<!-- <div class="jutify-center flex h-1/3 w-full gap-6">
-		<a href="playlists/discover-weekly">
-			<div
-				class=" flex h-full flex-col justify-between rounded-2xl bg-gradient-to-r from-primary to-secondary p-6"
-			>
-				<div>
-					<p class="text-2xl font-bold text-neutral">Discover Weekly</p>
-					<p class="font-bold text-neutral/[0.5]">
-						Your weekly mixtape of fresh music. Enjoy new music and deep cuts picked for you.
-					</p>
-				</div>
-				<p>x likes</p>
-			</div>
-		</a>
-
-		<a href="playlists/release-radar">
-			<div
-				class="flex h-full flex-col justify-between rounded-2xl bg-gradient-to-r from-secondary to-accent p-8"
-			>
-				<p class="text-right">x likes</p>
-				<div>
-					<p class="text-2xl font-bold text-neutral">Release Radar</p>
-					<p class="font-bold text-neutral/[0.5]">
-						Catch all the latest music from artists you follow, plus new singles picked for you.
-					</p>
-				</div>
-			</div>
-		</a>
+	<div class="flex w-full items-center gap-8">
+		<PlaylistCard playlist={discover_weekly} />
+		<PlaylistCard playlist={release_radar} />
 	</div>
-	<p class="text-2xl font-bold text-neutral">Recently played</p>
+	<!-- <p class="text-2xl font-bold text-neutral">Recently played</p>
 	<p class="text-2xl font-bold text-neutral">More of what you like</p> -->
 </div>

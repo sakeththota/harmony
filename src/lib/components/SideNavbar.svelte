@@ -12,6 +12,7 @@
 		try {
 			playlists = await trpc($page).getUserPlaylists.query();
 		} catch (error) {
+			console.error(error);
 			if (error instanceof TRPCClientError) playlists = [];
 			else throw error;
 		}
