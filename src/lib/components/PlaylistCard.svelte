@@ -6,7 +6,7 @@
 
 <a href="/playlists/spotify/{playlist?.id}">
 	<div
-		class="flex w-48 flex-col items-start justify-center gap-3 rounded-lg p-4 hover:bg-neutral/[0.15]"
+		class="flex w-44 flex-col items-start justify-center gap-3 rounded-lg p-2 hover:bg-neutral/[0.15]"
 	>
 		<img class="h-40 w-40 rounded-xl" src={playlist?.images[0].url} alt={playlist?.name} />
 		<div class="w-full">

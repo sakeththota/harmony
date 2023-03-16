@@ -2,6 +2,8 @@ import { t } from '$lib/trpc/t';
 import { auth } from '$lib/trpc/middleware/auth';
 import { logger } from '$lib/trpc/middleware/logger';
 import { SpotifyWebApi } from 'spotify-web-api-ts';
+import { z } from 'zod';
+
 export const router = t.router({
 	getUserPlaylists: t.procedure
 		.use(logger)
@@ -14,22 +16,33 @@ export const router = t.router({
 			});
 		}),
 
-	getDiscoverWeekly: t.procedure
+	getSpotifyPlaylistById: t.procedure
 		.use(logger)
 		.use(auth)
-		.query(async ({ ctx: { spotify_token } }) => {
+		.input(z.string().nonempty())
+		.query(async ({ ctx: { spotify_token }, input }) => {
 			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
-			const discover_weekly = await spotify.playlists.getPlaylist('37i9dQZEVXcKXkpUPWbPnp');
+			const discover_weekly = await spotify.playlists.getPlaylist(input);
 			return discover_weekly;
 		}),
 
-	getReleaseRadar: t.procedure
+	getSpotifyRecentlyPlayed: t.procedure
 		.use(logger)
 		.use(auth)
 		.query(async ({ ctx: { spotify_token } }) => {
 			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
-			const release_radar = await spotify.playlists.getPlaylist('37i9dQZEVXbolQeUEgn9Sn');
-			return release_radar;
+			const recently_played = await spotify.player.getRecentlyPlayedTracks();
+			return recently_played.items.map(({ track }) => track);
+		}),
+
+	getSpotifyRecommendations: t.procedure
+		.use(logger)
+		.use(auth)
+		.input(z.array(z.string().nonempty()).nonempty())
+		.query(async ({ ctx: { spotify_token }, input }) => {
+			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
+			const recommendations = await spotify.browse.getRecommendations({ seed_artists: input });
+			return recommendations;
 		})
 });
 
