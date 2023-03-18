@@ -32,7 +32,9 @@ export const router = t.router({
 		.query(async ({ ctx: { spotify_token } }) => {
 			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
 			const recently_played = await spotify.player.getRecentlyPlayedTracks();
-			return recently_played.items.map(({ track }) => track);
+			return recently_played.items
+				.map(({ track }) => track)
+				.filter((t1, index, self) => index === self.findIndex((t2) => t1.id === t2.id));
 		}),
 
 	getSpotifyRecommendations: t.procedure
