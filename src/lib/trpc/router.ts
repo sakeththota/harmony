@@ -38,11 +38,13 @@ export const router = t.router({
 	getSpotifyRecommendations: t.procedure
 		.use(logger)
 		.use(auth)
-		.input(z.array(z.string().nonempty()).nonempty())
+		.input(z.array(z.string()))
 		.query(async ({ ctx: { spotify_token }, input }) => {
 			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
-			const recommendations = await spotify.browse.getRecommendations({ seed_artists: input });
-			return recommendations;
+			const recommendations = await spotify.browse.getRecommendations({
+				seed_artists: input.slice(0, 3)
+			});
+			return recommendations.tracks;
 		})
 });
 

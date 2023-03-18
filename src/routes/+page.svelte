@@ -15,13 +15,8 @@
 		timeOfDay = 'evening';
 	}
 
-	// const getRecentlyPlayed = async () => {}
-
-	// const getReccomendations = async () => {}
-
 	let discover_weekly: Playlist;
 	let release_radar: Playlist;
-
 	const getDiscover = async () => {
 		discover_weekly = await trpc($page).getSpotifyPlaylistById.query('37i9dQZEVXcKXkpUPWbPnp');
 		release_radar = await trpc($page).getSpotifyPlaylistById.query('37i9dQZEVXbolQeUEgn9Sn');
@@ -32,23 +27,27 @@
 		recently_played = await trpc($page).getSpotifyRecentlyPlayed.query();
 	};
 
-	// let recommendations;
-	// const getReccs = async () => {
-	// 	recommendations = await trpc($page).getSpotifyRecommendations.query(recently_played.map((track) => track.artists[0].id));
-	// }
+	let recommendations: Track[] = [];
+	const getReccs = async () => {
+		recommendations = await trpc($page).getSpotifyRecommendations.query(
+			recently_played.map((track) => track.artists[0].id)
+		);
+	};
 
 	onMount(async () => {
 		await getDiscover();
 		await getRecents();
-		// await getReccs();
+		await getReccs();
 	});
 </script>
 
 <div class="flex h-full w-full flex-col gap-2 p-2 text-neutral">
 	<p class="text-2xl font-bold text-neutral">Good {timeOfDay}</p>
-	<div class="flex w-full items-center gap-8">
-		<PlaylistCard playlist={discover_weekly} />
-		<PlaylistCard playlist={release_radar} />
+	<div class="flex w-full items-center gap-4">
+		{#if discover_weekly && release_radar}
+			<PlaylistCard playlist={discover_weekly} />
+			<PlaylistCard playlist={release_radar} />
+		{/if}
 	</div>
 	<p class="text-2xl font-bold text-neutral">Recently played</p>
 	<div class="flex w-full flex-col justify-center">
@@ -59,4 +58,11 @@
 		{/each}
 	</div>
 	<p class="text-2xl font-bold text-neutral">More of what you like</p>
+	<div class="flex w-full flex-col justify-center">
+		{#each recommendations as track, index}
+			{#if index < 3}
+				<TrackCard {track} />
+			{/if}
+		{/each}
+	</div>
 </div>
