@@ -3,6 +3,7 @@ import { auth } from '$lib/trpc/middleware/auth';
 import { logger } from '$lib/trpc/middleware/logger';
 import { SpotifyWebApi } from 'spotify-web-api-ts';
 import { z } from 'zod';
+import type { Playlist } from 'spotify-web-api-ts/types/types/SpotifyObjects';
 
 export const router = t.router({
 	getUserPlaylists: t.procedure
