@@ -1,0 +1,77 @@
+Arguments: 
+  /usr/local/Cellar/node/19.6.1/bin/node /usr/local/bin/yarn install
+
+PATH: 
+  /Users/sakeththota/Library/pnpm:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin/pywalfox:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/sakeththota/Library/pnpm
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  19.6.1
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, copyfile '/Users/sakeththota/Library/Caches/Yarn/v6/npm-estraverse-4.3.0-398ad3f3c5a24948be7725e83d11a7de28cdbd1d-integrity/node_modules/estraverse/.jshintrc' -> '/Users/sakeththota/dev/personal23/harmony/node_modules/@typescript-eslint/utils/node_modules/estraverse/.jshintrc'
+
+npm manifest: 
+  {
+  	"name": "harmony",
+  	"version": "0.0.1",
+  	"private": true,
+  	"scripts": {
+  		"dev": "vite dev",
+  		"build": "vite build",
+  		"preview": "vite preview",
+  		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+  		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+  		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+  		"format": "prettier --plugin-search-dir . --write ."
+  	},
+  	"devDependencies": {
+  		"@iconify/svelte": "^3.1.0",
+  		"@sveltejs/adapter-auto": "^2.0.0",
+  		"@sveltejs/kit": "^1.5.0",
+  		"@typescript-eslint/eslint-plugin": "^5.45.0",
+  		"@typescript-eslint/parser": "^5.45.0",
+  		"autoprefixer": "^10.4.13",
+  		"eslint": "^8.28.0",
+  		"eslint-config-prettier": "^8.5.0",
+  		"eslint-plugin-svelte3": "^4.0.0",
+  		"postcss": "^8.4.21",
+  		"prettier": "^2.8.4",
+  		"prettier-plugin-svelte": "^2.8.1",
+  		"prettier-plugin-tailwindcss": "^0.2.3",
+  		"prisma": "^4.10.1",
+  		"svelte": "^3.54.0",
+  		"svelte-check": "^3.0.1",
+  		"tailwind-scrollbar": "^2.1.0",
+  		"tailwindcss": "^3.2.7",
+  		"tslib": "^2.4.1",
+  		"typescript": "^4.9.3",
+  		"vite": "^4.0.0"
+  	},
+  	"type": "module",
+  	"dependencies": {
+  		"@prisma/client": "^4.10.1",
+  		"@supabase/auth-helpers-sveltekit": "^0.8.7",
+  		"@supabase/supabase-js": "^2.8.0",
+  		"@sveltejs/adapter-node": "^1.2.0",
+  		"@trpc/client": "^10.13.0",
+  		"@trpc/server": "^10.13.0",
+  		"@types/spotify-api": "^0.0.20",
+  		"@types/ws": "^8.5.4",
+  		"spotify-web-api-ts": "^1.4.5",
+  		"trpc-sveltekit": "^3.4.2",
+  		"ws": "^8.12.0",
+  		"zod": "^3.21.4"
+  	}
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

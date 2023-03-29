@@ -4,7 +4,7 @@
 	export let playlist: Playlist;
 </script>
 
-<a href="/playlists/spotify/{playlist?.id}">
+<a href="/playlist/spotify/{playlist?.id}">
 	<div
 		class="flex w-44 flex-col items-start justify-center gap-3 rounded-lg p-2 hover:bg-neutral/[0.15]"
 	>

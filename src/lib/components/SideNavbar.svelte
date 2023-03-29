@@ -28,16 +28,17 @@
 	<p class="-mb-2 font-bold text-primary">Browse</p>
 	<div class="w-full">
 		<NavItem href="/" icon="material-symbols:home-rounded">Home</NavItem>
-		<!-- <NavItem href="/search" icon="material-symbols:search-rounded">Search</NavItem>
+		<NavItem href="/search" icon="material-symbols:search-rounded">Search</NavItem>
 		<NavItem href="/library" icon="material-symbols:library-music-rounded">Library</NavItem>
 		<div class="h-8" />
+		<!-- <hr class="my-4 border-neutral/[0.15] px-8" /> -->
 		<NavItem
 			on:click={() => getLatestPlaylists()}
 			href="/playlist/create"
 			icon="material-symbols:add">Create Playlist</NavItem
 		>
 		<NavItem href="/likes" icon="mdi:cards-heart">Liked Songs</NavItem>
-		<NavItem href="/jukebox" icon="material-symbols:speaker">Jukebox</NavItem> -->
+		<NavItem href="/jukebox" icon="material-symbols:speaker">Jukebox</NavItem>
 	</div>
 	<p class="-mb-2 font-bold text-primary">Playlists</p>
 	<div

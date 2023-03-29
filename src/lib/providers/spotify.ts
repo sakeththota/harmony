@@ -26,7 +26,6 @@ export const spotifyGetAuthorizationUrl = (): string => {
 	url.searchParams.append('redirect_uri', 'http://localhost:5173/connect/spotify');
 	url.searchParams.append('scope', scope.join(' '));
 	url.searchParams.append('show_dialog', 'true');
-	// url.searchParams.append('state', '');
 	return url.href;
 };
 

@@ -14,7 +14,6 @@ const handleUser: Handle = async ({ event, resolve }) => {
 	event.locals.supabase = supabaseClient;
 	event.locals.session = session;
 
-	console.log(event.url.pathname);
 	if (event.locals.session) {
 		// logged in users can't access /login or /register until they logout
 		if (event.url.pathname.startsWith('/login')) throw redirect(302, '/');
