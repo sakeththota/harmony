@@ -14,6 +14,8 @@
 		loading = false;
 	});
 
+	// table scroll logic
+
 	// helpers
 	const trackLength = (duration_ms: number) => {
 		return `${Math.floor(duration_ms / 60000)}:${Math.floor(duration_ms / 10000)}`;
@@ -60,10 +62,10 @@
 	};
 </script>
 
-<div class="flex h-full w-full flex-col gap-4 p-4">
+<div class="flex h-full w-full flex-col gap-4 overflow-y-scroll px-4">
 	{#if !loading}
-		<div class="flex w-full gap-4">
-			<img class="h-48" src={playlist.images[0].url} alt={playlist.name} />
+		<div class="flex w-full gap-4 pt-4">
+			<img class="h-48 rounded-xl" src={playlist.images[0].url} alt={playlist.name} />
 			<div class="flex flex-col justify-end gap-4">
 				{#if playlist.public}
 					<p class=" text-sm text-neutral">Public Playlist</p>
@@ -86,24 +88,39 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex flex-1 overflow-y-scroll text-neutral">
-			<table class="w-full">
-				<tr class="sticky top-0 bg-primary text-left">
+		<div class="flex flex-1 text-neutral">
+			<table class="w-full table-auto">
+				<tr class="sticky top-0 h-12 border-b-2 border-primary text-left">
+					<th class="pl-4">#</th>
 					<th>Title</th>
 					<th>Album</th>
 					<th>Date added</th>
 					<th>Duration</th>
 				</tr>
-				{#each playlist.tracks.items as playlist_item}
-					<tr class="text-left">
-						<td>{playlist_item.track.name}</td>
-						<td
+				{#each playlist.tracks.items as playlist_item, i}
+					<tr class="group h-14 text-left">
+						<td class="rounded-tl rounded-bl pl-4 group-hover:bg-neutral/[0.15]">{i + 1}</td>
+						<td class="group-hover:bg-neutral/[0.15]">
+							<div class="flex items-center gap-4">
+								<img
+									alt={playlist_item.track.album.name}
+									class="h-10 w-10 rounded-sm"
+									src={playlist_item.track.album.images[0].url}
+								/>
+								<p>{playlist_item.track.name}</p>
+							</div>
+						</td>
+						<td class="group-hover:bg-neutral/[0.15]"
 							>{playlist_item.track.type === 'track'
 								? playlist_item.track.album.name
 								: playlist_item.track.show.name}</td
 						>
-						<td>{timeSince(Date.parse(playlist_item.added_at))}</td>
-						<td>{trackLength(playlist_item.track.duration_ms)}</td>
+						<td class="group-hover:bg-neutral/[0.15]"
+							>{timeSince(Date.parse(playlist_item.added_at))}</td
+						>
+						<td class="rounded-tr rounded-br group-hover:bg-neutral/[0.15]"
+							>{trackLength(playlist_item.track.duration_ms)}</td
+						>
 					</tr>
 				{/each}
 			</table>

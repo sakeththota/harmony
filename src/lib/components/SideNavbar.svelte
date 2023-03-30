@@ -47,7 +47,7 @@
 		<div class="visible flex w-full flex-col">
 			{#if playlists?.length}
 				{#each playlists as playlist}
-					<PlaylistLink href="/playlists/spotify/{playlist.id}" text={playlist.name} />
+					<PlaylistLink href="/playlist/spotify/{playlist.id}" text={playlist.name} />
 				{/each}
 				<PlaylistLink href="/" text="" />
 				<PlaylistLink href="/" text="" />
