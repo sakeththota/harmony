@@ -3,7 +3,6 @@ import { auth } from '$lib/trpc/middleware/auth';
 import { logger } from '$lib/trpc/middleware/logger';
 import { SpotifyWebApi } from 'spotify-web-api-ts';
 import { z } from 'zod';
-import type { Playlist } from 'spotify-web-api-ts/types/types/SpotifyObjects';
 
 export const router = t.router({
 	getUserPlaylists: t.procedure
@@ -33,9 +32,9 @@ export const router = t.router({
 		.query(async ({ ctx: { spotify_token } }) => {
 			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
 			const recently_played = await spotify.player.getRecentlyPlayedTracks();
-			return recently_played.items
-				.map(({ track }) => track)
-				.filter((t1, index, self) => index === self.findIndex((t2) => t1.id === t2.id));
+			return recently_played.items.filter(
+				(t1, index, self) => index === self.findIndex((t2) => t1.track.id === t2.track.id)
+			);
 		}),
 
 	getSpotifyRecommendations: t.procedure
@@ -48,6 +47,15 @@ export const router = t.router({
 				seed_artists: input.slice(0, 3)
 			});
 			return recommendations.tracks;
+		}),
+
+	getSpotifyFeatured: t.procedure
+		.use(logger)
+		.use(auth)
+		.query(async ({ ctx: { spotify_token } }) => {
+			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
+			const featured = await spotify.browse.getFeaturedPlaylists();
+			return featured.playlists.items;
 		})
 });
 

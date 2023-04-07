@@ -14,7 +14,39 @@
 		loading = false;
 	});
 
-	// table scroll logic
+	// table sort logic
+	const sortBy = (col) => {
+		switch (col) {
+			case 'Title':
+				playlist.tracks.items.sort(({ track: a }, { track: b }) => {
+					if (a.name < b.name) return -1;
+					else if (a.name > b.name) return 1;
+					else return 0;
+				});
+				break;
+			case 'Album':
+				playlist.tracks.items.sort(({ track: a }, { track: b }) => {
+					if (a.album.name < b.album.name) return -1;
+					else if (a.album.name > b.album.name) return 1;
+					else return 0;
+				});
+				break;
+			case 'Date':
+				playlist.tracks.items.sort((a, b) => {
+					if (a.added_at < b.added_at) return -1;
+					else if (a.added_at > b.added_at) return 1;
+					else return 0;
+				});
+				break;
+			case 'Duration':
+				playlist.tracks.items.sort(({ track: a }, { track: b }) => {
+					if (a.duration_ms < b.duration_ms) return -1;
+					else if (a.duration_ms > b.duration_ms) return 1;
+					else return 0;
+				});
+				break;
+		}
+	};
 
 	// helpers
 	const trackLength = (duration_ms: number) => {
@@ -62,7 +94,9 @@
 	};
 </script>
 
-<div class="flex h-full w-full flex-col gap-4 overflow-y-scroll px-4">
+<div
+	class="flex h-full w-full flex-col gap-4 overflow-y-scroll px-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral/[0.15] scrollbar-thumb-rounded-md "
+>
 	{#if !loading}
 		<div class="flex w-full gap-4 pt-4">
 			<img class="h-48 rounded-xl" src={playlist.images[0].url} alt={playlist.name} />
@@ -88,18 +122,29 @@
 				</div>
 			</div>
 		</div>
+		<div class="flex items-center gap-2 pt-2">
+			<button
+				class="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-base-100"
+				><Icon icon="material-symbols:play-arrow-rounded" width="75%" /></button
+			>
+			<button class="flex h-16 w-16 items-center justify-center text-primary"
+				><Icon icon="mdi:cards-heart-outline" width="45%" /></button
+			>
+		</div>
 		<div class="flex flex-1 text-neutral">
 			<table class="w-full table-auto">
-				<tr class="sticky top-0 h-12 border-b-2 border-primary text-left">
-					<th class="pl-4">#</th>
-					<th>Title</th>
-					<th>Album</th>
-					<th>Date added</th>
-					<th>Duration</th>
+				<tr class="sticky top-0 h-12 border-b-2 border-primary bg-base-100 text-left">
+					<th class="cursor-default pl-4">#</th>
+					<th class="cursor-default hover:text-primary">Title</th>
+					<th class="cursor-default hover:text-primary">Album</th>
+					<th class="cursor-default hover:text-primary">Date added</th>
+					<th class="cursor-default hover:text-primary">Duration</th>
 				</tr>
 				{#each playlist.tracks.items as playlist_item, i}
-					<tr class="group h-14 text-left">
-						<td class="rounded-tl rounded-bl pl-4 group-hover:bg-neutral/[0.15]">{i + 1}</td>
+					<tr class="group h-14 cursor-pointer text-left">
+						<td class="rounded-tl rounded-bl px-4 text-neutral/[0.35] group-hover:bg-neutral/[0.15]"
+							>{i + 1}</td
+						>
 						<td class="group-hover:bg-neutral/[0.15]">
 							<div class="flex items-center gap-4">
 								<img

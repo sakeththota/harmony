@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { trpc } from '$lib/trpc/client';
-	import type { Playlist, Track } from 'spotify-web-api-ts/types/types/SpotifyObjects';
+	import type {
+		Playlist,
+		SimplifiedPlaylist,
+		Track
+	} from 'spotify-web-api-ts/types/types/SpotifyObjects';
 	import { onMount } from 'svelte';
 	import PlaylistCard from '$lib/components/PlaylistCard.svelte';
 	import TrackCard from '$lib/components/TrackCard.svelte';
@@ -22,22 +26,30 @@
 		release_radar = await trpc($page).getSpotifyPlaylistById.query('37i9dQZEVXbolQeUEgn9Sn');
 	};
 
-	let recently_played: Track[] = [];
+	let recent_tracks: Track[] = [];
 	const getRecents = async () => {
-		recently_played = await trpc($page).getSpotifyRecentlyPlayed.query();
+		let history = await trpc($page).getSpotifyRecentlyPlayed.query();
+		recent_tracks = history.map((scrobble) => scrobble.track);
 	};
 
 	let recommendations: Track[] = [];
 	const getReccs = async () => {
 		recommendations = await trpc($page).getSpotifyRecommendations.query(
-			recently_played.map((track) => track.artists[0].id)
+			recent_tracks.map((track) => track.artists[0].id)
 		);
+	};
+
+	let featured: SimplifiedPlaylist[] = [];
+	const getFeatured = async () => {
+		featured = await trpc($page).getSpotifyFeatured.query();
+		console.log(featured);
 	};
 
 	onMount(async () => {
 		await getDiscover();
 		await getRecents();
 		await getReccs();
+		await getFeatured();
 	});
 </script>
 
@@ -49,20 +61,44 @@
 			<PlaylistCard playlist={release_radar} />
 		{/if}
 	</div>
-	<p class="text-2xl font-bold text-neutral">Recently played</p>
-	<div class="flex w-full flex-col justify-center">
-		{#each recently_played as track, index}
-			{#if index < 3}
-				<TrackCard {track} />
-			{/if}
-		{/each}
+	<div class="flex w-full justify-center gap-8">
+		<div>
+			<p class="text-2xl font-bold text-neutral">Recently played</p>
+			{#each recent_tracks as track, index}
+				{#if index < 4}
+					<TrackCard {track} />
+				{/if}
+			{/each}
+		</div>
+		<div class="flex w-full flex-col justify-center">
+			<p class="text-2xl font-bold text-neutral">More of what you like</p>
+			{#each recommendations as track, index}
+				{#if index < 4}
+					<TrackCard {track} />
+				{/if}
+			{/each}
+		</div>
 	</div>
-	<p class="text-2xl font-bold text-neutral">More of what you like</p>
-	<div class="flex w-full flex-col justify-center">
-		{#each recommendations as track, index}
-			{#if index < 3}
-				<TrackCard {track} />
-			{/if}
-		{/each}
+	<div class="flex items-center">
+		<div>
+			<p class="text-2xl font-bold text-neutral">Featured</p>
+			<div class="flex w-full items-center">
+				{#each featured as playlist, index}
+					{#if index < 4}
+						<PlaylistCard {playlist} />
+					{/if}
+				{/each}
+			</div>
+		</div>
+		<div>
+			<p class="text-2xl font-bold text-neutral">Featured</p>
+			<div class="flex w-full items-center">
+				{#each featured as playlist, index}
+					{#if index < 4}
+						<PlaylistCard {playlist} />
+					{/if}
+				{/each}
+			</div>
+		</div>
 	</div>
 </div>

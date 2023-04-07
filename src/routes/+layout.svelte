@@ -33,11 +33,11 @@
 			<PageView>
 				<slot />
 			</PageView>
-			<span class="h-full w-[1px] bg-neutral/[0.15]" />
-			<div class="h-full w-52 border-0" />
+			<!-- <span class="h-full w-[1px] bg-neutral/[0.15]" />
+			<div class="h-full w-52 border-0" /> -->
 		</div>
 		<!-- media player -->
-		<!-- <div class="absolute bottom-0 h-[88px] w-full bg-base-100" />
-		<div class="absolute bottom-0 h-[88px] w-full bg-neutral/[0.15]" /> -->
+		<div class="absolute bottom-0 h-[88px] w-full bg-base-100" />
+		<div class="absolute bottom-0 h-[88px] w-full bg-neutral/[0.15]" />
 	</div>
 {/if}
