@@ -23,7 +23,7 @@
 	});
 </script>
 
-<div class="flex h-full w-52 flex-col items-start gap-4 pt-2 pb-4 pl-2">
+<div class="flex h-full w-56 flex-col items-start gap-4 pt-2 pb-4 pl-2">
 	<img class="h-6 " src={logo} alt="harmony logo" />
 	<p class="-mb-2 font-bold text-primary">Browse</p>
 	<div class="w-full">

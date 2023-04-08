@@ -124,7 +124,7 @@
 		</div>
 		<div class="flex items-center gap-2 pt-2">
 			<button
-				class="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-base-100"
+				class="flex h-14 w-14 items-center justify-center rounded-full border-2 border-primary text-primary"
 				><Icon icon="material-symbols:play-arrow-rounded" width="75%" /></button
 			>
 			<button class="flex h-16 w-16 items-center justify-center text-primary"

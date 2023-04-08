@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Playlist } from 'spotify-web-api-ts/types/types/SpotifyObjects';
+	import type { Playlist, SimplifiedPlaylist } from 'spotify-web-api-ts/types/types/SpotifyObjects';
 
-	export let playlist: Playlist;
+	export let playlist: Playlist | SimplifiedPlaylist;
 </script>
 
 <a href="/playlist/spotify/{playlist?.id}">

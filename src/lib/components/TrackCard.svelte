@@ -6,7 +6,7 @@
 
 <a href="#">
 	<div
-		class="items flex h-16 w-96 items-center justify-start gap-4 rounded-lg p-2 hover:bg-neutral/[0.15]"
+		class="items flex h-16 items-center justify-start gap-4 rounded-lg p-2 hover:bg-neutral/[0.15]"
 	>
 		<img class="h-11 rounded-lg" src={track.album.images[0].url} alt={track.name} />
 		<div class="flex-1 truncate">
