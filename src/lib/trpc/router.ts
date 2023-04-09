@@ -12,7 +12,7 @@ export const router = t.router({
 			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
 			const { items } = await spotify.playlists.getMyPlaylists();
 			return items.map((playlist) => {
-				return { name: playlist.name, id: playlist.id };
+				return { name: playlist.name, id: playlist.id, img_src: playlist.images[0].url };
 			});
 		}),
 

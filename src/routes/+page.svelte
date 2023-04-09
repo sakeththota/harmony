@@ -53,13 +53,13 @@
 	});
 </script>
 
-<div class="flex h-full w-full flex-col gap-8 p-2 text-neutral">
+<div class="flex w-full grow flex-col gap-4 p-2 text-neutral">
 	<p class="text-2xl font-bold text-neutral">Good {timeOfDay}</p>
-	<div class="relative h-[350px] w-full">
+	<div class="relative h-[300px] w-full">
 		<div class="outer absolute top-0 left-0 h-full w-7/12 ">
 			<div class="clip-a h-full w-full bg-gradient-to-br from-primary to-accent" />
 		</div>
-		<div class="outer  absolute top-0 right-0 h-[350px] w-7/12 ">
+		<div class="outer absolute top-0 right-0 h-[300px] w-7/12 ">
 			<div class="clip-b h-full w-full bg-gradient-to-br from-accent to-primary" />
 		</div>
 	</div>
@@ -89,7 +89,7 @@
 			<PlaylistCard playlist={release_radar} />
 		{/if}
 	</div> -->
-	<div class="flex w-full items-center gap-8 ">
+	<div class="flex w-full items-center gap-4 ">
 		<div class="w-full">
 			<p class="text-2xl font-bold text-neutral">More of what you like</p>
 			{#each recommendations as track, index}
@@ -100,7 +100,7 @@
 		</div>
 		<div class="flex gap-4">
 			{#each featured as playlist, index}
-				{#if index < 4}
+				{#if index < 3}
 					<PlaylistCard {playlist} />
 				{/if}
 			{/each}
@@ -109,7 +109,7 @@
 	<div class="flex w-full items-center gap-4">
 		<div class="flex gap-4">
 			{#each featured as playlist, index}
-				{#if index > 4 && index < 9}
+				{#if index > 3 && index < 7}
 					<PlaylistCard {playlist} />
 				{/if}
 			{/each}

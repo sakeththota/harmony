@@ -28,13 +28,13 @@
 	</div>
 {:else}
 	<div class="flex h-screen w-screen flex-col bg-black">
-		<div class="flex h-full items-center gap-2 p-4">
+		<div class="flex min-h-0 grow items-center gap-4 p-4">
 			<SideNavbar />
 			<PageView>
 				<slot />
 			</PageView>
-			<!-- <span class="h-full w-[1px] bg-neutral/[0.15]" /> -->
-			<!-- <div class="h-full w-56 border-0" /> -->
+			<div class="h-full w-72 rounded-xl border-0 bg-base-100" />
 		</div>
+		<div class="flex h-32" />
 	</div>
 {/if}

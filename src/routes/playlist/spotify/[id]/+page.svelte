@@ -94,9 +94,7 @@
 	};
 </script>
 
-<div
-	class="flex h-full w-full flex-col gap-4 overflow-y-scroll px-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral/[0.15] scrollbar-thumb-rounded-md "
->
+<div class="flex h-full w-full flex-col gap-4 px-4 ">
 	{#if !loading}
 		<div class="flex w-full gap-4 pt-4">
 			<img class="h-48 rounded-xl" src={playlist.images[0].url} alt={playlist.name} />

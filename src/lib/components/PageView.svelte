@@ -6,7 +6,9 @@
 	let dropdownOpen = false;
 </script>
 
-<div class="flex h-full flex-1 flex-col rounded-xl bg-base-100 px-2">
+<div
+	class="flex h-full flex-1 flex-col overflow-y-scroll rounded-xl bg-base-100 px-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-neutral/[0.15] scrollbar-thumb-rounded-md"
+>
 	<div class="relative flex h-11 w-full items-center justify-between">
 		<!-- pull out into navigation component at some point -->
 		<div class="flex items-center gap-4">
