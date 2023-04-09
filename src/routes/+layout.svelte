@@ -27,17 +27,14 @@
 		<slot />
 	</div>
 {:else}
-	<div class="flex h-screen w-screen flex-col bg-base-100">
+	<div class="flex h-screen w-screen flex-col bg-black">
 		<div class="flex h-full items-center gap-2 p-4">
 			<SideNavbar />
 			<PageView>
 				<slot />
 			</PageView>
-			<span class="h-full w-[1px] bg-neutral/[0.15]" />
-			<div class="h-full w-56 border-0" />
+			<!-- <span class="h-full w-[1px] bg-neutral/[0.15]" /> -->
+			<!-- <div class="h-full w-56 border-0" /> -->
 		</div>
-		<!-- media player -->
-		<!-- <div class="absolute bottom-0 h-[88px] w-full bg-base-100" /> -->
-		<!-- <div class="absolute bottom-0 h-[88px] w-full bg-neutral/[0.15]" /> -->
 	</div>
 {/if}
