@@ -39,37 +39,41 @@
 			<div class="clip-a h-full w-full cursor-pointer bg-gradient-to-br from-primary to-accent" />
 		</div>
 		{#if discover_weekly}
-			<div class="absolute top-0 left-0 flex h-full w-7/12 flex-col justify-between p-6">
-				<div class="flex w-3/4 flex-col">
-					<p class="text-3xl font-extrabold">{discover_weekly.name}</p>
-					<p class="text-sm font-extrabold text-neutral/[0.5]">{discover_weekly.description}</p>
+			<a href="playlist/spotify/{discover_weekly.id}">
+				<div class="absolute top-0 left-0 flex h-full w-7/12 flex-col justify-between p-6">
+					<div class="flex w-3/4 flex-col">
+						<p class="text-3xl font-extrabold">{discover_weekly.name}</p>
+						<p class="text-sm font-extrabold text-neutral/[0.5]">{discover_weekly.description}</p>
+					</div>
+					<div class="flex items-center gap-2">
+						<Icon class="h-6 w-6 rounded-md bg-neutral/[0.5] p-1" icon="mdi:cards-heart" />
+						<p>{discover_weekly.followers.total} likes</p>
+						<p>•</p>
+						<p>{discover_weekly.tracks.total} songs</p>
+					</div>
 				</div>
-				<div class="flex items-center gap-2">
-					<Icon class="h-6 w-6 rounded-md bg-neutral/[0.5] p-1" icon="mdi:cards-heart" />
-					<p>{discover_weekly.followers.total} likes</p>
-					<p>•</p>
-					<p>{discover_weekly.tracks.total} songs</p>
-				</div>
-			</div>
+			</a>
 		{/if}
 		<div class="outer absolute top-0 right-0 h-[300px] w-7/12 ">
 			<div class="clip-b h-full w-full cursor-pointer bg-gradient-to-br from-accent to-primary" />
 		</div>
 		{#if release_radar}
-			<div
-				class="absolute top-0 right-0 flex h-full w-7/12 flex-col items-end justify-between  p-6"
-			>
-				<div class="flex items-center gap-2">
-					<Icon class="h-6 w-6 rounded-md bg-neutral/[0.5] p-1" icon="mdi:cards-heart" />
-					<p>{release_radar.followers.total} likes</p>
-					<p>•</p>
-					<p>{release_radar.tracks.total} songs</p>
+			<a href="playlist/spotify/{release_radar.id}">
+				<div
+					class="absolute top-0 right-0 flex h-full w-7/12 flex-col items-end justify-between  p-6"
+				>
+					<div class="flex items-center gap-2">
+						<Icon class="h-6 w-6 rounded-md bg-neutral/[0.5] p-1" icon="mdi:cards-heart" />
+						<p>{release_radar.followers.total} likes</p>
+						<p>•</p>
+						<p>{release_radar.tracks.total} songs</p>
+					</div>
+					<div class="flex w-3/4 flex-col">
+						<p class="text-3xl font-extrabold">{release_radar.name}</p>
+						<p class="text-sm font-extrabold text-neutral/[0.5]">{release_radar.description}</p>
+					</div>
 				</div>
-				<div class="flex w-3/4 flex-col">
-					<p class="text-3xl font-extrabold">{release_radar.name}</p>
-					<p class="text-sm font-extrabold text-neutral/[0.5]">{release_radar.description}</p>
-				</div>
-			</div>
+			</a>
 		{/if}
 	</div>
 	<svg

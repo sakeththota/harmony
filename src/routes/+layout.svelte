@@ -35,6 +35,6 @@
 			</PageView>
 			<div class="h-full w-72 rounded-xl border-0 bg-base-100" />
 		</div>
-		<div class="flex h-32" />
+		<div class="flex h-24" />
 	</div>
 {/if}
