@@ -26,6 +26,7 @@ specifiers:
   spotify-web-api-ts: ^1.4.5
   svelte: ^3.54.0
   svelte-check: ^3.0.1
+  svelte-infinite-scroll: ^2.0.1
   tailwind-scrollbar: ^2.1.0
   tailwindcss: ^3.2.7
   trpc-sveltekit: ^3.4.2
@@ -45,6 +46,7 @@ dependencies:
   '@types/spotify-api': 0.0.20
   '@types/ws': 8.5.4
   spotify-web-api-ts: 1.4.5
+  svelte-infinite-scroll: 2.0.1
   trpc-sveltekit: 3.4.2_wazxat3ehptqnii6bifqrsnjom
   ws: 8.12.1
   zod: 3.21.4
@@ -2228,6 +2230,10 @@ packages:
       svelte: '>=3.19.0'
     dependencies:
       svelte: 3.55.1
+
+  /svelte-infinite-scroll/2.0.1:
+    resolution: {integrity: sha512-goTHCfOHRDCs8C5MeSuIc6LlAQ8zVQ+M4Y3LyvrDjx5rqSSxSrdCuQwIyWYNcO6j6/mnqRro3QB64ClBzfn+Wg==}
+    dev: false
 
   /svelte-preprocess/5.0.1_k4bhxdknaltjvjwprbm23edr5q:
     resolution: {integrity: sha512-0HXyhCoc9rsW4zGOgtInylC6qj259E1hpFnJMJWTf+aIfeqh4O/QHT31KT2hvPEqQfdjmqBR/kO2JDkkciBLrQ==}

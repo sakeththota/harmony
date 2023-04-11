@@ -45,6 +45,7 @@
 		"@types/spotify-api": "^0.0.20",
 		"@types/ws": "^8.5.4",
 		"spotify-web-api-ts": "^1.4.5",
+		"svelte-infinite-scroll": "^2.0.1",
 		"trpc-sveltekit": "^3.4.2",
 		"ws": "^8.12.0",
 		"zod": "^3.21.4"

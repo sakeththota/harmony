@@ -5,15 +5,14 @@ import { SpotifyWebApi } from 'spotify-web-api-ts';
 import { z } from 'zod';
 
 export const router = t.router({
-	getUserPlaylists: t.procedure
+	getSpotifyUserPlaylists: t.procedure
 		.use(logger)
 		.use(auth)
-		.query(async ({ ctx: { spotify_token } }) => {
+		.input(z.number())
+		.query(async ({ ctx: { spotify_token }, input }) => {
 			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
-			const { items } = await spotify.playlists.getMyPlaylists();
-			return items.map((playlist) => {
-				return { name: playlist.name, id: playlist.id, img_src: playlist.images[0].url };
-			});
+			const playlists = await spotify.playlists.getMyPlaylists({ limit: 20, offset: input });
+			return playlists;
 		}),
 
 	getSpotifyPlaylistById: t.procedure

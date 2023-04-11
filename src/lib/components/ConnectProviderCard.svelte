@@ -7,7 +7,7 @@
 </script>
 
 <div
-	class="flex w-1/6 flex-col items-start gap-2 rounded-lg border-2 border-neutral/[0.15] p-4 text-neutral"
+	class="flex w-1/5 flex-col items-start gap-2 rounded-lg border-2 border-neutral/[0.15] p-4 text-neutral"
 >
 	<Icon {icon} height="32" />
 	<p class="text-xl">

@@ -57,10 +57,10 @@
 	<p class="text-2xl font-bold text-neutral">Good {timeOfDay}</p>
 	<div class="relative h-[300px] w-full">
 		<div class="outer absolute top-0 left-0 h-full w-7/12 ">
-			<div class="clip-a h-full w-full bg-gradient-to-br from-primary to-accent" />
+			<div class="clip-a h-full w-full cursor-pointer bg-gradient-to-br from-primary to-accent" />
 		</div>
 		<div class="outer absolute top-0 right-0 h-[300px] w-7/12 ">
-			<div class="clip-b h-full w-full bg-gradient-to-br from-accent to-primary" />
+			<div class="clip-b h-full w-full cursor-pointer bg-gradient-to-br from-accent to-primary" />
 		</div>
 	</div>
 	<svg
