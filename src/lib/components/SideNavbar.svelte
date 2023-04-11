@@ -33,9 +33,9 @@
 		<NavItem href="/" icon="material-symbols:home-rounded">Home</NavItem>
 		<NavItem href="/search" icon="material-symbols:search-rounded">Search</NavItem>
 	</div>
-	<div class="flex w-full flex-1 flex-col overflow-auto rounded-xl bg-base-100">
+	<div class="flex w-full flex-1 flex-col overflow-auto rounded-xl bg-base-100 px-2">
 		<div
-			class="flex h-16 items-center justify-start gap-4 rounded-md bg-none py-2 px-4 text-neutral/[0.5]"
+			class="flex h-16 items-center justify-start gap-4 rounded-md bg-none py-2 px-2 text-neutral/[0.5]"
 		>
 			<Icon icon="material-symbols:library-music-rounded" height="20" />
 			<p class="text-md">Playlists</p>

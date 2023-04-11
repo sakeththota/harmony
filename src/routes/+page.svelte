@@ -9,59 +9,68 @@
 	import { onMount } from 'svelte';
 	import PlaylistCard from '$lib/components/PlaylistCard.svelte';
 	import TrackCard from '$lib/components/TrackCard.svelte';
+	import Icon from '@iconify/svelte';
 	var curHr = new Date().getHours();
-	let timeOfDay = '';
-	if (curHr < 12) {
-		timeOfDay = 'morning';
-	} else if (curHr < 18) {
-		timeOfDay = 'afternoon';
-	} else {
-		timeOfDay = 'evening';
-	}
 
 	let discover_weekly: Playlist;
 	let release_radar: Playlist;
-	const getDiscover = async () => {
+	let recent_tracks: Track[] = [];
+	let recommendations: Track[] = [];
+	let featured: SimplifiedPlaylist[] = [];
+	onMount(async () => {
 		discover_weekly = await trpc($page).getSpotifyPlaylistById.query('37i9dQZEVXcKXkpUPWbPnp');
 		release_radar = await trpc($page).getSpotifyPlaylistById.query('37i9dQZEVXbolQeUEgn9Sn');
-	};
-
-	let recent_tracks: Track[] = [];
-	const getRecents = async () => {
-		let history = await trpc($page).getSpotifyRecentlyPlayed.query();
-		recent_tracks = history.map((scrobble) => scrobble.track);
-	};
-
-	let recommendations: Track[] = [];
-	const getReccs = async () => {
+		recent_tracks = (await trpc($page).getSpotifyRecentlyPlayed.query()).map(
+			(scrobble) => scrobble.track
+		);
 		recommendations = await trpc($page).getSpotifyRecommendations.query(
 			recent_tracks.map((track) => track.artists[0].id)
 		);
-	};
-
-	let featured: SimplifiedPlaylist[] = [];
-	const getFeatured = async () => {
 		featured = await trpc($page).getSpotifyFeatured.query();
-		console.log(featured);
-	};
-
-	onMount(async () => {
-		await getDiscover();
-		await getRecents();
-		await getReccs();
-		await getFeatured();
 	});
 </script>
 
 <div class="flex w-full grow flex-col gap-4 p-2 text-neutral">
-	<p class="text-2xl font-bold text-neutral">Good {timeOfDay}</p>
+	<p class="text-2xl font-bold text-neutral">
+		Good {curHr < 12 ? 'morning' : curHr < 18 ? 'afternoon' : 'evening'}
+	</p>
 	<div class="relative h-[300px] w-full">
 		<div class="outer absolute top-0 left-0 h-full w-7/12 ">
 			<div class="clip-a h-full w-full cursor-pointer bg-gradient-to-br from-primary to-accent" />
 		</div>
+		{#if discover_weekly}
+			<div class="absolute top-0 left-0 flex h-full w-7/12 flex-col justify-between p-6">
+				<div class="flex w-3/4 flex-col">
+					<p class="text-3xl font-extrabold">{discover_weekly.name}</p>
+					<p class="text-sm font-extrabold text-neutral/[0.5]">{discover_weekly.description}</p>
+				</div>
+				<div class="flex items-center gap-2">
+					<Icon class="h-6 w-6 rounded-md bg-neutral/[0.5] p-1" icon="mdi:cards-heart" />
+					<p>{discover_weekly.followers.total} likes</p>
+					<p>•</p>
+					<p>{discover_weekly.tracks.total} songs</p>
+				</div>
+			</div>
+		{/if}
 		<div class="outer absolute top-0 right-0 h-[300px] w-7/12 ">
 			<div class="clip-b h-full w-full cursor-pointer bg-gradient-to-br from-accent to-primary" />
 		</div>
+		{#if release_radar}
+			<div
+				class="absolute top-0 right-0 flex h-full w-7/12 flex-col items-end justify-between  p-6"
+			>
+				<div class="flex items-center gap-2">
+					<Icon class="h-6 w-6 rounded-md bg-neutral/[0.5] p-1" icon="mdi:cards-heart" />
+					<p>{release_radar.followers.total} likes</p>
+					<p>•</p>
+					<p>{release_radar.tracks.total} songs</p>
+				</div>
+				<div class="flex w-3/4 flex-col">
+					<p class="text-3xl font-extrabold">{release_radar.name}</p>
+					<p class="text-sm font-extrabold text-neutral/[0.5]">{release_radar.description}</p>
+				</div>
+			</div>
+		{/if}
 	</div>
 	<svg
 		style="visibility: hidden; position: absolute;"
@@ -83,12 +92,6 @@
 			</filter>
 		</defs>
 	</svg>
-	<!-- <div class="flex w-full gap-4">
-		{#if discover_weekly && release_radar}
-			<PlaylistCard playlist={discover_weekly} />
-			<PlaylistCard playlist={release_radar} />
-		{/if}
-	</div> -->
 	<div class="flex w-full items-center gap-4 ">
 		<div class="w-full">
 			<p class="text-2xl font-bold text-neutral">More of what you like</p>
