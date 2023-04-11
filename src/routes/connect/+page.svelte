@@ -4,10 +4,12 @@
 	export let data: PageData;
 </script>
 
-<div class="flex h-full w-full flex-col gap-2 p-2">
-	<p class="text-2xl font-bold text-neutral">Connect Music</p>
-	<p class="text-sm text-neutral">Connect your favorite music services to start listening!</p>
-	<form method="POST" class="flex w-full flex-row gap-4 pt-2">
+<div class="flex h-full w-full flex-col gap-4 p-2">
+	<div>
+		<p class="text-2xl font-bold text-neutral">Connect Music</p>
+		<p class="text-sm text-neutral">Connect your favorite music services to start listening!</p>
+	</div>
+	<form method="POST" class="flex w-full flex-row items-center gap-4 ">
 		<ConnectProviderCard
 			icon="logos:spotify-icon"
 			label="Spotify"

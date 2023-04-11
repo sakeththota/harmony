@@ -1,4 +1,4 @@
-import { spotifyGetAuthorizationUrl } from '$lib/providers/spotify';
+import { spotifyGetAuthorizationUrl } from '$lib/helpers/spotify';
 import { redirect, type Actions } from '@sveltejs/kit';
 
 export const actions: Actions = {

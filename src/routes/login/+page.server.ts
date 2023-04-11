@@ -1,6 +1,6 @@
 import { AuthApiError } from '@supabase/supabase-js';
 import { fail, redirect, type Actions } from '@sveltejs/kit';
-import { refreshSpotifyAccessToken } from '$lib/providers/spotify';
+import { refreshSpotifyAccessToken } from '$lib/helpers/spotify';
 
 export const actions: Actions = {
 	login: async ({ request, locals, cookies }) => {

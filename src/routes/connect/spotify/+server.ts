@@ -1,5 +1,5 @@
 import { error, redirect, type RequestHandler } from '@sveltejs/kit';
-import { getSpotifyAccessToken } from '$lib/providers/spotify';
+import { getSpotifyAccessToken } from '$lib/helpers/spotify';
 
 export const GET: RequestHandler = async ({ url, locals, cookies }) => {
 	const code = url.searchParams.get('code') || null;

@@ -6,3 +6,19 @@
 	font-family: 'Fira Code', monospace;
 	font-family: 'Poppins', sans-serif;
 }
+
+@layer utilities {
+	.outer {
+		filter: url(#round);
+	}
+
+	.clip-a {
+		clip-path: polygon(0 0, 100% 0, 65% 100%, 0 100%);
+	}
+
+	.clip-b {
+		background-clip: border-box;
+		clip-path: polygon(35% 0, 100% 0, 100% 100%, 0 100%);
+		filter: url(#round);
+	}
+}

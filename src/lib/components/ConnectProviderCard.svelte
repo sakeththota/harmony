@@ -7,20 +7,20 @@
 </script>
 
 <div
-	class="flex w-1/6 flex-col items-start gap-2 rounded-lg border-2 border-neutral/[0.15] p-4 text-neutral"
+	class="flex w-1/5 flex-col items-start gap-2 rounded-lg border-2 border-neutral/[0.15] p-4 text-neutral"
 >
-	<Icon {icon} height="28" />
-	<p class="text-lg">
+	<Icon {icon} height="32" />
+	<p class="text-xl">
 		{label}
 	</p>
 	{#if $$slots.description}
-		<p class="text-sm">
+		<p class="text-md">
 			<slot name="description" />
 		</p>
 	{/if}
 	<button
 		disabled={connected !== false}
-		class="flex items-center gap-2 {connected
+		class="flex items-center gap-2 text-lg {connected
 			? 'text-success'
 			: connected === null
 			? 'text-neutral/[0.15]'
