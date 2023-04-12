@@ -10,6 +10,8 @@
 	import PlaylistCard from '$lib/components/PlaylistCard.svelte';
 	import TrackCard from '$lib/components/TrackCard.svelte';
 	import Icon from '@iconify/svelte';
+	import uzi from '$lib/assets/uzi.png';
+	import future from '$lib/assets/future.png';
 	var curHr = new Date().getHours();
 
 	let discover_weekly: Playlist;
@@ -36,12 +38,16 @@
 	</p>
 	<div class="relative h-[300px] w-full">
 		<div class="outer absolute top-0 left-0 h-full w-7/12 ">
-			<div class="clip-a h-full w-full cursor-pointer bg-gradient-to-br from-primary to-accent" />
+			<div
+				class="clip-a relative h-full w-full cursor-pointer bg-gradient-to-br from-primary to-accent"
+			>
+				<img class="absolute right-24 bottom-0 w-64" src={uzi} />
+			</div>
 		</div>
 		{#if discover_weekly}
 			<a href="playlist/spotify/{discover_weekly.id}">
-				<div class="absolute top-0 left-0 flex h-full w-7/12 flex-col justify-between p-6">
-					<div class="flex w-3/4 flex-col">
+				<div class="absolute relative top-0 left-0 flex h-full w-7/12 flex-col justify-between p-6">
+					<div class="flex w-3/5 flex-col">
 						<p class="text-3xl font-extrabold">{discover_weekly.name}</p>
 						<p class="text-sm font-extrabold text-neutral/[0.5]">{discover_weekly.description}</p>
 					</div>
@@ -55,7 +61,11 @@
 			</a>
 		{/if}
 		<div class="outer absolute top-0 right-0 h-[300px] w-7/12 ">
-			<div class="clip-b h-full w-full cursor-pointer bg-gradient-to-br from-accent to-primary" />
+			<div
+				class="clip-b relative h-full w-full cursor-pointer bg-gradient-to-br from-accent to-primary"
+			>
+				<img class="absolute bottom-0 right-1/4 w-72" src={future} />
+			</div>
 		</div>
 		{#if release_radar}
 			<a href="playlist/spotify/{release_radar.id}">
@@ -68,7 +78,7 @@
 						<p>•</p>
 						<p>{release_radar.tracks.total} songs</p>
 					</div>
-					<div class="flex w-3/4 flex-col">
+					<div class="flex w-3/5 flex-col">
 						<p class="text-3xl font-extrabold">{release_radar.name}</p>
 						<p class="text-sm font-extrabold text-neutral/[0.5]">{release_radar.description}</p>
 					</div>
@@ -105,7 +115,7 @@
 				{/if}
 			{/each}
 		</div>
-		<div class="flex gap-4">
+		<div class="flex w-full gap-4">
 			{#each featured as playlist, index}
 				{#if index < 3}
 					<PlaylistCard {playlist} />
