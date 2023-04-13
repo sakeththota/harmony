@@ -12,24 +12,12 @@
 	import Icon from '@iconify/svelte';
 	import uzi from '$lib/assets/uzi.png';
 	import future from '$lib/assets/future.png';
+	import type { PageData } from './$types';
 	var curHr = new Date().getHours();
 
-	let discover_weekly: Playlist;
-	let release_radar: Playlist;
-	let recent_tracks: Track[] = [];
-	let recommendations: Track[] = [];
-	let featured: SimplifiedPlaylist[] = [];
-	onMount(async () => {
-		discover_weekly = await trpc($page).getSpotifyPlaylistById.query('37i9dQZEVXcKXkpUPWbPnp');
-		release_radar = await trpc($page).getSpotifyPlaylistById.query('37i9dQZEVXbolQeUEgn9Sn');
-		recent_tracks = (await trpc($page).getSpotifyRecentlyPlayed.query()).map(
-			(scrobble) => scrobble.track
-		);
-		recommendations = await trpc($page).getSpotifyRecommendations.query(
-			recent_tracks.map((track) => track.artists[0].id)
-		);
-		featured = await trpc($page).getSpotifyFeatured.query();
-	});
+	export let data: PageData;
+
+	const { discover_weekly, release_radar, recent_tracks, recc_tracks, feat_tracks } = data;
 </script>
 
 <div class="flex w-full grow flex-col gap-4 p-2 text-neutral">
@@ -109,14 +97,14 @@
 	<div class="flex w-full items-center gap-4 ">
 		<div class="w-full">
 			<p class="text-2xl font-bold text-neutral">More of what you like</p>
-			{#each recommendations as track, index}
+			{#each recc_tracks as track, index}
 				{#if index < 3}
 					<TrackCard {track} />
 				{/if}
 			{/each}
 		</div>
 		<div class="flex w-full gap-4">
-			{#each featured as playlist, index}
+			{#each feat_tracks as playlist, index}
 				{#if index < 3}
 					<PlaylistCard {playlist} />
 				{/if}
@@ -125,7 +113,7 @@
 	</div>
 	<div class="flex w-full items-center gap-4">
 		<div class="flex gap-4">
-			{#each featured as playlist, index}
+			{#each feat_tracks as playlist, index}
 				{#if index > 3 && index < 7}
 					<PlaylistCard {playlist} />
 				{/if}
