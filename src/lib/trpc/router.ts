@@ -1,61 +1,8 @@
-import { t } from '$lib/trpc/t';
-import { auth } from '$lib/trpc/middleware/auth';
-import { logger } from '$lib/trpc/middleware/logger';
-import { SpotifyWebApi } from 'spotify-web-api-ts';
-import { z } from 'zod';
+import { router } from '$lib/trpc/t';
+import { spotifyRouter } from './routers/spotifyRouter';
 
-export const router = t.router({
-	getSpotifyUserPlaylists: t.procedure
-		.use(logger)
-		.use(auth)
-		.input(z.number())
-		.query(async ({ ctx: { spotify_token }, input }) => {
-			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
-			const playlists = await spotify.playlists.getMyPlaylists({ limit: 20, offset: input });
-			return playlists;
-		}),
-
-	getSpotifyPlaylistById: t.procedure
-		.use(logger)
-		.use(auth)
-		.input(z.string().nonempty())
-		.query(async ({ ctx: { spotify_token }, input }) => {
-			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
-			const discover_weekly = await spotify.playlists.getPlaylist(input);
-			return discover_weekly;
-		}),
-
-	getSpotifyRecentlyPlayed: t.procedure
-		.use(logger)
-		.use(auth)
-		.query(async ({ ctx: { spotify_token } }) => {
-			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
-			const recently_played = await spotify.player.getRecentlyPlayedTracks();
-			return recently_played.items.filter(
-				(t1, index, self) => index === self.findIndex((t2) => t1.track.id === t2.track.id)
-			);
-		}),
-
-	getSpotifyRecommendations: t.procedure
-		.use(logger)
-		.use(auth)
-		.input(z.array(z.string()))
-		.query(async ({ ctx: { spotify_token }, input }) => {
-			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
-			const recommendations = await spotify.browse.getRecommendations({
-				seed_artists: input.slice(0, 3)
-			});
-			return recommendations.tracks;
-		}),
-
-	getSpotifyFeatured: t.procedure
-		.use(logger)
-		.use(auth)
-		.query(async ({ ctx: { spotify_token } }) => {
-			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
-			const featured = await spotify.browse.getFeaturedPlaylists();
-			return featured.playlists.items;
-		})
+export const appRouter = router({
+	spotify: spotifyRouter
 });
 
 export type Router = typeof router;

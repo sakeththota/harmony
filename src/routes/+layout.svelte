@@ -28,7 +28,7 @@
 	</div>
 {:else}
 	<div class="flex h-screen w-screen flex-col bg-black">
-		<div class="flex min-h-0 grow items-center gap-4 p-4">
+		<div class="flex min-h-0 min-w-0 grow items-center gap-4 p-4">
 			<SideNavbar />
 			<PageView>
 				<slot />

@@ -17,10 +17,11 @@
 
 	export let data: PageData;
 
-	const { discover_weekly, release_radar, recent_tracks, recc_tracks, feat_tracks } = data;
+	const { discover_weekly, release_radar, recent_tracks, recc_tracks, feat_tracks, daily_mixs } =
+		data;
 </script>
 
-<div class="flex w-full grow flex-col gap-4 p-2 text-neutral">
+<div class="flex w-full grow flex-col gap-4  p-2 text-neutral">
 	<p class="text-2xl font-bold text-neutral">
 		Good {curHr < 12 ? 'morning' : curHr < 18 ? 'afternoon' : 'evening'}
 	</p>
@@ -95,31 +96,29 @@
 		</defs>
 	</svg>
 	<div class="flex w-full items-center gap-4 ">
-		<div class="w-full">
-			<p class="text-2xl font-bold text-neutral">More of what you like</p>
+		<div class="flex-1">
+			<p class="text-2xl font-bold text-neutral">Made for you</p>
 			{#each recc_tracks as track, index}
 				{#if index < 3}
 					<TrackCard {track} />
 				{/if}
 			{/each}
 		</div>
-		<div class="flex w-full gap-4">
-			{#each feat_tracks as playlist, index}
-				{#if index < 3}
-					<PlaylistCard {playlist} />
-				{/if}
+		<div class="flex gap-4">
+			{#each daily_mixs as playlist, index}
+				<PlaylistCard {playlist} />
 			{/each}
 		</div>
 	</div>
 	<div class="flex w-full items-center gap-4">
-		<div class="flex gap-4">
+		<div class="flex gap-4 ">
 			{#each feat_tracks as playlist, index}
 				{#if index > 3 && index < 7}
 					<PlaylistCard {playlist} />
 				{/if}
 			{/each}
 		</div>
-		<div class="w-full">
+		<div class="flex-1">
 			<p class="text-2xl font-bold text-neutral">Recently played</p>
 			{#each recent_tracks as track, index}
 				{#if index < 3}
