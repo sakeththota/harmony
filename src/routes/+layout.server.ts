@@ -4,7 +4,7 @@ export const load: LayoutServerLoad = async ({ cookies }) => {
 	return {
 		connected: {
 			spotify: cookies.get('spotify') ? true : false,
-			soundcloud: null,
+			soundcloud: cookies.get('soundcloud') ? true : false,
 			youtubemusic: null
 		}
 	};

@@ -17,7 +17,7 @@
 	$: playlists = [...playlists, ...newData];
 
 	const getSpotifyPlaylists = async (offset: number) => {
-		const res = await trpc($page).getSpotifyUserPlaylists.query(offset);
+		const res = await trpc($page).spotify.getSpotifyUserPlaylists.query(offset);
 		if (!total) total = res.total;
 		newData = res.items;
 	};

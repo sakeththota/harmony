@@ -122,7 +122,7 @@
 		</div>
 		<div class="flex items-center gap-2 pt-2">
 			<button
-				class="flex h-14 w-14 items-center justify-center rounded-full border-2 border-primary text-primary"
+				class="flex h-12 w-12 items-center justify-center rounded-full border-2 border-primary text-primary"
 				><Icon icon="material-symbols:play-arrow-rounded" width="75%" /></button
 			>
 			<button class="flex h-16 w-16 items-center justify-center text-primary"
@@ -138,6 +138,7 @@
 					<th class="cursor-default hover:text-primary">Date added</th>
 					<th class="cursor-default hover:text-primary">Duration</th>
 				</tr>
+				<hr class="h-2 border-0" />
 				{#each playlist.tracks.items as playlist_item, i}
 					<tr class="group h-14 cursor-pointer text-left">
 						<td class="rounded-tl rounded-bl px-4 text-neutral/[0.35] group-hover:bg-neutral/[0.15]"
