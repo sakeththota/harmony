@@ -5,4 +5,4 @@ export const appRouter = router({
 	spotify: spotifyRouter
 });
 
-export type Router = typeof router;
+export type Router = typeof appRouter;

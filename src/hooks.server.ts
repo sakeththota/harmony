@@ -1,12 +1,12 @@
 import '$lib/supabase';
 import { redirect, type Handle } from '@sveltejs/kit';
 import { createContext } from '$lib/trpc/context';
-import { router } from '$lib/trpc/router';
+import { appRouter } from '$lib/trpc/router';
 import { createTRPCHandle } from 'trpc-sveltekit';
 import { getSupabase } from '@supabase/auth-helpers-sveltekit';
 import { sequence } from '@sveltejs/kit/hooks';
 
-const handleTRPC: Handle = createTRPCHandle({ router, createContext });
+const handleTRPC: Handle = createTRPCHandle({ router: appRouter, createContext });
 
 const handleUser: Handle = async ({ event, resolve }) => {
 	const { supabaseClient, session } = await getSupabase(event);
