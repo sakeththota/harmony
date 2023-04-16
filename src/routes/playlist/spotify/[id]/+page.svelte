@@ -10,7 +10,7 @@
 	let playlist: Playlist;
 	let loading = true;
 	onMount(async () => {
-		playlist = await trpc($page).getSpotifyPlaylistById.query(data.id);
+		playlist = await trpc($page).spotify.getSpotifyPlaylistById.query(data.id);
 		loading = false;
 	});
 
