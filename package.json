@@ -44,7 +44,7 @@
 		"@trpc/server": "^10.13.0",
 		"@types/spotify-api": "^0.0.20",
 		"@types/ws": "^8.5.4",
-		"soundcloud": "^3.3.2",
+		"soundcloud-scraper": "^5.0.3",
 		"spotify-web-api-ts": "^1.4.5",
 		"svelte-infinite-scroll": "^2.0.1",
 		"trpc-sveltekit": "^3.4.2",
