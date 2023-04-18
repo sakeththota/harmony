@@ -12,7 +12,7 @@ declare global {
 			connected: {
 				spotify: boolean | null;
 				soundcloud: boolean | null;
-				youtubemusic: boolean | null;
+				ytmusic: boolean | null;
 			};
 		}
 		// interface Platform {}

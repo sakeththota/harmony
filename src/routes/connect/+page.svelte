@@ -17,6 +17,12 @@
 		/>
 
 		<ConnectProviderCard
+			icon="logos:youtube-icon"
+			label="YT Music"
+			connected={data.connected.ytmusic}
+		/>
+
+		<ConnectProviderCard
 			icon="logos:soundcloud"
 			label="Soundcloud"
 			connected={data.connected.soundcloud}
@@ -24,11 +30,5 @@
 			Search and playback functionality is still supported, but private user playlists and
 			personalized playlists will be unavailable until further notice.</ConnectProviderCard
 		>
-
-		<ConnectProviderCard
-			icon="logos:youtube-icon"
-			label="Youtube Music"
-			connected={data.connected.youtubemusic}
-		/>
 	</form>
 </div>

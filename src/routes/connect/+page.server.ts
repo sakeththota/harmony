@@ -1,23 +1,33 @@
 import { spotifyGetAuthorizationUrl } from '$lib/helpers/spotify';
 import { redirect, type Actions } from '@sveltejs/kit';
-import Soundcloud from 'soundcloud-scraper';
-import fs from 'fs';
+import crypto from 'crypto';
 export const actions: Actions = {
 	spotify: async () => {
 		throw redirect(302, spotifyGetAuthorizationUrl());
 	},
-	soundcloud: async () => {
-		const sc = new Soundcloud.Client();
-		const song = await sc.getSongInfo(
-			'https://soundcloud.com/xrmaniwuzaccheretho/lil-uzi-vert-how-to-talk-pluggnb-remix_xrmani-ripwarheart'
-		);
-		const stream = await song.downloadProgressive();
-		const writer = stream.pipe(fs.createWriteStream(`./${song.title}.mp3`));
-		writer.on('finish', () => {
-			console.log('Finished writing song!');
-		});
+	soundcloud: async ({ cookies }) => {
+		// SC.initialize({
+		// 	client_id: '2jUbjIyAnUDbvqQ6o48wziWm1AVVmSr4',
+		// 	redirect_uri: 'http://localhost/connect/soundcloud'
+		// });
+		// SC.connect();
+		// const api_key = await Soundcloud.Util.keygen();
+		// cookies.set('soundcloud', api_key, {
+		// 	path: '/',
+		// 	httpOnly: true,
+		// 	sameSite: 'strict',
+		// 	secure: process.env.NODE_ENV === 'production',
+		// 	maxAge: 60 * 55
+		// });
+		return;
 	},
-	youtubemusic: async () => {
-		console.log('hit youtube music');
+	ytmusic: async ({ cookies }) => {
+		cookies.set('ytmusic', crypto.randomBytes(32).toString('hex'), {
+			path: '/',
+			httpOnly: true,
+			sameSite: 'strict',
+			secure: process.env.NODE_ENV === 'production',
+			maxAge: 60 * 55
+		});
 	}
 };
