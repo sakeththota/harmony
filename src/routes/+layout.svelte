@@ -7,6 +7,9 @@
 	import SideNavbar from '$lib/components/SideNavbar.svelte';
 	import Notifications from '$lib/components/Notifications.svelte';
 	import PageView from '$lib/components/PageView.svelte';
+	import type { LayoutData } from './$types';
+
+	export let data: LayoutData;
 
 	onMount(() => {
 		const {
@@ -29,11 +32,15 @@
 {:else}
 	<div class="flex h-screen w-screen flex-col bg-black">
 		<div class="flex min-h-0 min-w-0 grow items-center gap-4 p-4">
-			<SideNavbar />
+			{#if data.connected.spotify || data.connected.soundcloud}
+				<SideNavbar />
+			{/if}
 			<PageView>
 				<slot />
 			</PageView>
-			<div class="h-full w-72 rounded-xl border-0 bg-base-100" />
+			{#if data.connected.spotify || data.connected.soundcloud}
+				<div class="h-full w-72 rounded-xl border-0 bg-base-100" />
+			{/if}
 		</div>
 		<div class="flex h-20" />
 	</div>

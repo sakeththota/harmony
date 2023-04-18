@@ -15,16 +15,20 @@
 			label="Spotify"
 			connected={data.connected.spotify}
 		/>
+
+		<ConnectProviderCard
+			icon="logos:youtube-icon"
+			label="YT Music"
+			connected={data.connected.ytmusic}
+		/>
+
 		<ConnectProviderCard
 			icon="logos:soundcloud"
 			label="Soundcloud"
 			connected={data.connected.soundcloud}
-		/>
-
-		<ConnectProviderCard
-			icon="logos:youtube-icon"
-			label="Youtube Music"
-			connected={data.connected.youtubemusic}
-		/>
+			>User log in is currently unavailable due to Soundcloud's app registration being closed.
+			Search and playback functionality is still supported, but private user playlists and
+			personalized playlists will be unavailable until further notice.</ConnectProviderCard
+		>
 	</form>
 </div>
