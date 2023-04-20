@@ -11,9 +11,13 @@ export const spotifyRouter = router({
 		.input(z.string().nonempty())
 		.query(async ({ ctx: { spotify_token }, input }) => {
 			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
-			const results = await spotify.search.search(input, ['track']);
-			console.log(results);
-			return results.tracks.items.map((track) => track.name);
+			const results = await spotify.search.search(input, ['track', 'artist', 'playlist', 'album']);
+			return {
+				tracks: results.tracks?.items,
+				artists: results.artists?.items,
+				playlists: results.playlists?.items,
+				albums: results.albums?.items
+			};
 		}),
 
 	getSpotifyUserPlaylists: procedure

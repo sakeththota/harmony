@@ -1,7 +1,11 @@
 <script lang="ts">
-	import type { Playlist, SimplifiedPlaylist } from 'spotify-web-api-ts/types/types/SpotifyObjects';
+	import type {
+		Album,
+		Playlist,
+		SimplifiedPlaylist
+	} from 'spotify-web-api-ts/types/types/SpotifyObjects';
 
-	export let playlist: Playlist | SimplifiedPlaylist;
+	export let playlist: Playlist | SimplifiedPlaylist | Album;
 </script>
 
 <a href="/playlist/spotify/{playlist?.id}">
@@ -9,7 +13,7 @@
 		class="flex w-40 flex-col items-start justify-center gap-3 rounded-lg p-2 hover:bg-neutral/[0.15]"
 	>
 		<img class="h-36 w-36 rounded-xl" src={playlist?.images[0].url} alt={playlist?.name} />
-		<div class="w-full">
+		<div class="w-full text-neutral">
 			<p class="text-md flex-none truncate font-bold">
 				{playlist?.name}
 			</p>
