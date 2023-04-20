@@ -5,6 +5,17 @@ import { z } from 'zod';
 import { SpotifyWebApi } from 'spotify-web-api-ts';
 
 export const spotifyRouter = router({
+	search: procedure
+		.use(logger)
+		.use(spotifyAuth)
+		.input(z.string().nonempty())
+		.query(async ({ ctx: { spotify_token }, input }) => {
+			const spotify = new SpotifyWebApi({ accessToken: spotify_token });
+			const results = await spotify.search.search(input, ['track']);
+			console.log(results);
+			return results.tracks.items.map((track) => track.name);
+		}),
+
 	getSpotifyUserPlaylists: procedure
 		.use(logger)
 		.use(spotifyAuth)
