@@ -1,10 +1,8 @@
 <script lang="ts">
-	import type { Artist } from 'spotify-web-api-ts/types/types/SpotifyObjects';
-
-	export let artist: Artist;
+	export let artist;
 </script>
 
-<a href="/playlist/spotify/{artist.id}">
+<a href="/artists/spotify/{artist.id}">
 	<div
 		class="flex w-40 flex-col items-start justify-center gap-3 rounded-lg p-2 hover:bg-neutral/[0.15]"
 	>

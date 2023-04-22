@@ -1,7 +1,5 @@
 <script lang="ts">
-	import type { Track } from 'spotify-web-api-ts/types/types/SpotifyObjects';
-
-	export let track: Track;
+	export let track;
 </script>
 
 <a href="#">
