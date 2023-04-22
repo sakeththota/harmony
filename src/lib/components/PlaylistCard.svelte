@@ -2,10 +2,11 @@
 	import type {
 		Album,
 		Playlist,
-		SimplifiedPlaylist
+		SimplifiedPlaylist,
+		SimplifiedAlbum
 	} from 'spotify-web-api-ts/types/types/SpotifyObjects';
 
-	export let playlist: Playlist | SimplifiedPlaylist | Album;
+	export let playlist: Playlist | SimplifiedPlaylist | Album | SimplifiedAlbum;
 </script>
 
 <a href="/playlist/spotify/{playlist?.id}">
@@ -17,7 +18,9 @@
 			<p class="text-md flex-none truncate font-bold">
 				{playlist?.name}
 			</p>
-			<p class="flex-none truncate text-xs font-bold text-neutral/[0.5]">{playlist?.description}</p>
+			<p class="flex-none truncate text-xs font-bold text-neutral/[0.5]">
+				{playlist.description ? playlist.description : ''}
+			</p>
 		</div>
 	</div>
 </a>
