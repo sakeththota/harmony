@@ -1,33 +1,35 @@
+type Track = {
+	name: string;
+	id: string;
+	images: { url: string }[];
+	duration_ms: number;
+	artists: { name: string }[];
+};
+
+type Playlist = {
+	name: string;
+	id: string;
+	images: { url: string }[];
+	description: string | null;
+	owner: { display_name?: string | null | undefined };
+};
+
+type Artist = {
+	name: string;
+	id: string;
+	images: { url: string }[];
+};
+
+type Album = {
+	name: string;
+	id: string;
+	images: { url: string }[];
+	artists: { name: string }[];
+};
+
 type SearchResults = {
-	tracks?:
-		| {
-				name: string;
-				id: string;
-				images: { url: string }[];
-				duration_ms: number;
-				artists: { name: string }[];
-		  }[]
-		| undefined;
-	playlists?:
-		| {
-				name: string;
-				id: string;
-				images: { url: string }[];
-				description: string;
-		  }[]
-		| undefined;
-	artists?:
-		| {
-				name: string;
-				id: string;
-				images: { url: string }[];
-		  }[]
-		| undefined;
-	albums?:
-		| {
-				name: string;
-				id: string;
-				images: { url: string }[];
-		  }[]
-		| undefined;
+	tracks?: Track[];
+	playlists?: Playlist[];
+	artists?: Artist[];
+	albums?: Album[];
 };

@@ -24,7 +24,7 @@
 		</div>
 		{#if data.discover_weekly}
 			<a href="playlist/spotify/{data.discover_weekly.id}">
-				<div class="absolute relative top-0 left-0 flex h-full w-7/12 flex-col justify-between p-6">
+				<div class="absolute top-0 left-0 flex h-full w-7/12 flex-col justify-between p-6">
 					<div class="flex w-3/5 flex-col">
 						<p class="text-3xl font-extrabold">{data.discover_weekly.name}</p>
 						<p class="text-sm font-extrabold text-neutral/[0.5]">
@@ -99,7 +99,7 @@
 		</div>
 		<div class="flex gap-4">
 			{#each data.daily_mixs as playlist, index}
-				<PlaylistCard {playlist} />
+				<PlaylistCard collection={playlist} />
 			{/each}
 		</div>
 	</div>
@@ -107,7 +107,7 @@
 		<div class="flex gap-4 ">
 			{#each data.feat_tracks as playlist, index}
 				{#if index > 3 && index < 7}
-					<PlaylistCard {playlist} />
+					<PlaylistCard collection={playlist} />
 				{/if}
 			{/each}
 		</div>

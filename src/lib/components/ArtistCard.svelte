@@ -11,6 +11,7 @@
 			<p class="text-md flex-none truncate font-bold">
 				{artist.name}
 			</p>
+			<p class="flex-none truncate text-xs font-bold text-neutral/[0.5]">Artist</p>
 		</div>
 	</div>
 </a>
