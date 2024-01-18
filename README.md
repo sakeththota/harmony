@@ -50,6 +50,10 @@
 
 Harmony is a free music streaming app that allows users to listen to their favorite music streaming services in one place together.
 
+<a href="https://github.com/sakeththota/harmony">
+  <img src="src/lib/assets/app.png" alt="Homepage" >
+</a>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Technologies
